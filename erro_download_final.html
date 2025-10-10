@@ -1,0 +1,1642 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Grupo Construserv | Sistema de Gestão e Monitoramento</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+        <!-- MAIN CSS -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/font-marine.css" />
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/layout_global-v2.css">
+
+    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+    <link rel="stylesheet" href="/assets/css/demo.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <!-- ICONS -->
+ 
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+
+    <link rel="shortcut icon" type="image/ico" href="http://sistemas.grupoconstruserv/assets/icons/favicon.png" />
+
+
+    <link rel="stylesheet" href="/assets/font-awesome/css/all.min.css">
+    <script type="text/javascript" src="/assets/font-awesome/js/all.min.js"></script>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/klorofil-common.js"></script>
+
+
+    <!-- https://select2.org/ -->
+    <link rel="stylesheet" href="/assets/css/select2.min.css">
+    <script type="text/javascript" src="/assets/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $.fn.select2.amd.define('select2/i18n/pt-br', [], function() {
+            return {
+                errorLoading: function() {
+                    return 'Não foi possível carregar os resultados.';
+                },
+                inputTooLong: function(args) {
+                    var overChars = args.input.length - args.maximum;
+                    var message = 'Por favor, remova ' + overChars + ' caractere';
+                    if (overChars >= 2) {
+                        message += 's';
+                    }
+                    return message;
+                },
+                inputTooShort: function(args) {
+                    var remainingChars = args.minimum - args.input.length;
+
+                    return 'Por favor, digite ' + remainingChars + ' ou mais caracteres';
+                },
+                loadingMore: function() {
+                    return 'Carregando mais registros...';
+                },
+                maximumSelected: function(args) {
+                    var message = 'Você pode selecionar ' + args.maximum + ' ite';
+
+                    if (args.maximum <= 1) {
+                        message += 'm';
+                    } else {
+                        message += 'ns';
+                    }
+
+                    return message;
+                },
+                noResults: function() {
+                    return 'Nenhum resultado encontrado...';
+                },
+                searching: function() {
+                    return 'Procurar...';
+                }
+            };
+        });
+        // $.fn.select2.defaults.set("theme", "bootstrap");
+
+        $('.select2').select2();
+    </script>
+
+    <script type="text/javascript" src="/assets/js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="/assets/js/moment-timezone-with-data.min.js"></script>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+    <script type="text/javascript" src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        var datetimepickerOptions = {
+            locale: 'pt-br',
+            format: 'DD/MM/YYYY',
+            showTodayButton: true,
+            showClear: true,
+            showClose: true,
+            keepOpen: true,
+            inline: false,
+            useCurrent: false,
+            widgetPositioning: {
+                horizontal: 'auto',
+                vertical: 'auto'
+            }
+        };
+        /* para outras opções veja o doc https://eonasdan.github.io/bootstrap-datetimepicker
+            e utilize a seguinte syntax:
+                datetimepickerOptions['format'] = 'DD/MM/YYYY HH:mm';
+                datetimepickerOptions['inline'] = true;
+                datetimepickerOptions['sideBySide'] =  true;
+        */
+    </script>
+    <link rel="stylesheet" href="/assets/css/ui.autocomplete.css">
+    <!-- VENDORS CSS -->
+
+            <link rel="stylesheet" href="/assets/uxsolutions/css/bootstrap-datepicker.css">
+        <script type="text/javascript" src="/assets/uxsolutions/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript" src="/assets/uxsolutions/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    
+    <link rel="stylesheet" href="/assets/css/datatables.css" />
+    <link rel="stylesheet" href="/assets/css/jquery.dataTables.yadcf.css" />
+    <!-- <link rel="stylesheet" href="/assets/css/buttons.dataTables.css" type="text/css"> -->
+    <!-- <script type="text/javascript" src="/assets/js/datatables.min.js"></script> -->
+    <script type="text/javascript" src="/assets/js/dataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/assets/js/dataTables/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="/assets/js/dataTables/jszip.min.js"></script>
+    <script type="text/javascript" src="/assets/js/dataTables/pdfmake.min.js"></script>
+    <script type="text/javascript" src="/assets/js/dataTables/vfs_fonts.js"></script>
+    <script type="text/javascript" src="/assets/js/dataTables/buttons.html5.js"></script>
+    <script type="text/javascript" src="/assets/js/dataTables/buttons.print.min.js"></script>
+
+    <script type="text/javascript" src="/assets/js/dataTables.datetime-moment.js"></script>
+
+    <script src="/assets/js/jquery.dataTables.yadcf.js"></script>
+    
+
+    <script>
+        var dataTableOptionsGlobal = {
+
+            //      "scrollY":        "400px",
+            //      "scrollCollapse": true,
+            "dom": '<"pull-left"i><"pull-right"fl>tip',
+            //"pageLength": 20,  button
+            "paging": false,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "language": {
+                "lengthMenu": "Exibindo _MENU_ registros por página",
+                "zeroRecords": "Nada encontrado",
+                "info": "Mostrando _END_ registros",
+                "infoEmpty": "Nenhum registro disponível",
+                "infoFiltered": "(Filtrado de _MAX_ registros totais)",
+                "search": "Filtro",
+                "paginate": {
+                    "next": "Próximo",
+                    "previous": "Anterior",
+                    "first": "Primeiro",
+                    "last": "Último"
+                },
+                "buttons": {
+                    "copyTitle": 'Dados copiados',
+                    "copySuccess": {
+                        _: '%d linhas foram copiadas',
+                        1: '1 linha foi copiada'
+                    }
+                }
+            },
+
+        };
+    </script>
+
+    <script type="text/javascript" src="/assets/js/highstock-7.js"></script>
+    <script type="text/javascript" src="/assets/js/highcharts-more-7.js"></script>
+    <script type="text/javascript" src="/assets/js/highcharts-exporting.js"></script>
+    <link rel="stylesheet" href="/assets/css/highcharts-7.css">
+    <script type="text/javascript">
+    Highcharts.setOptions({
+        credits: {
+            enabled: false
+        },
+        lang: {
+            contextButtonTitle: "Menu de contexto do gráfico",
+            decimalPoint: ",",
+            thousandsSep: " ",
+            downloadJPEG: "Salvar imagem JPEG",
+            downloadPDF: "Salvar documento PDF",
+            downloadPNG: "Salvar imagem PNG",
+            downloadSVG: "Salvar imagem vetorial SVG",
+            drillUpText: "Voltar para {series.name}",
+            invalidDate: "",
+            loading: "Atualizando o gráfico...aguarde",
+            months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            shortMonths: ["Jan", "Fev", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            weekdays: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+            shortWeekdays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+            noData: "Nenhum dado para exibir",
+            numericSymbolMagnitude: 1000,
+            numericSymbols: ["k", "M", "G", "T", "P", "E"],
+            printChart: "Imprimir gráfico",
+            rangeSelectorFrom: 'De',
+            rangeSelectorTo: 'até',
+            rangeSelectorZoom: "Zoom",
+            resetZoom: "Limpar zoom",
+            resetZoomTitle: "Voltar zoom para 1:1",
+        }
+    });
+    </script>
+
+    <link rel="stylesheet" href="/assets/vendor/linearicons/style.css">
+    <link rel="stylesheet" href="/assets/vendor/toastr/toastr.min.css">
+    <script type="text/javascript" src="/assets/vendor/toastr/toastr.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="/assets/css/card-dashboard.css">
+
+    <link rel="stylesheet" href="/assets/css/ug-theme-default.css">
+    <link rel="stylesheet" href="/assets/css/unite-gallery.css">
+
+    <link rel="stylesheet" href="/assets/vendor/chartist/css/chartist-custom.css">
+    <script type="text/javascript" src="/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/assets/vendor/chartist/js/chartist.min.js"></script>
+
+
+    <!-- open stret layer -->
+    <link rel="stylesheet" href="/assets/css/ol.css" type="text/css">
+    <script type="text/javascript" src="/assets/js/ol.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/pretty-checkbox.min.css" type="text/css">
+    <script type="text/javascript" src="/assets/js/pretty-checkbox-vue.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/jquery.webui-popover.min.css" type="text/css">
+    <script type="text/javascript" src="/assets/js/jquery.webui-popover.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/monitoramento.css" type="text/css">
+
+    <!-- <link rel="stylesheet" href="/assets/css/ui.jqgrid.min.css" type="text/css"> -->
+    <script type="text/javascript" src="/assets/js/jquery.jqgrid.min.js"></script>
+    <!-- <link rel="stylesheet" href="/assets/css/ui.jqgrid.css"> -->
+
+    <link rel="stylesheet" href="/assets/css/jkanban.min.css">
+    <script type="text/javascript" src="/assets/scripts/jkanban.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="/assets/css/jquery.loadingModal.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery.loading.min.css"> -->
+    <!-- <script type="text/javascript" src="/assets/scripts/jquery.loadingModal.min.js"></script> -->
+    <script type="text/javascript" src="/assets/scripts/jquery.loading.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap3-wysihtml5.all.min.css">
+    <script type="text/javascript" src="/assets/scripts/bootstrap3-wysihtml5.all.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.css" type="text/css" />
+    <script type="text/javascript" src="/assets/js/bootstrap-multiselect.js"></script>
+
+    <script type="text/javascript" src="/assets/js/md5.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/js/fancybox/jquery.fancybox.css">
+    <script type="text/javascript" src="/assets/js/fancybox/jquery.fancybox.pack.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css">
+    <script type="text/javascript" src="/assets/js/fullcalendar.js"></script>
+
+
+    <link rel="stylesheet" href="/assets/css/photoviewer.css">
+    <script type="text/javascript" src="/assets/js/photoviewer.js"></script>
+
+    <script type="text/javascript" src="/assets/js/json2.js"></script>
+    <script type="text/javascript" src="/assets/js/json2.min.js"></script>
+
+    <script type="text/javascript" src="/assets/js/ControlSidebar.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="/assets/css/vue2-autocomplete.css"> -->
+    <script type="text/javascript" src="/assets/js/vue.js"></script>
+    <script type="text/javascript" src="/assets/scripts/vue-filters.js"></script>
+    <script type="text/javascript" src="/assets/js/VueTheMask.umd.min.js"></script>
+    <script type="text/javascript" src="/assets/js/v-money.js"></script>
+    <!-- <script data-main="https://global.grupoconstruserv.eng.br/assets/js/vue.js"  src="/assets/js/require.js"></script> -->
+    <script type="text/javascript">
+        Vue.use(PrettyCheckbox, VueTheMask);
+    </script>
+
+    <script type="text/javascript" src="/assets/js/liquor-tree.umd.js">
+
+
+
+
+
+    <script type="text/javascript" src="/assets/scripts/scde-commons.js"></script>
+
+
+    <script type="text/javascript" src="/assets/js/jquery.form-validator.min.js"></script>
+
+    <script type="text/javascript" src="/assets/js/jquery.inputmask.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+
+    <script type="text/javascript" src="/assets/js/ckeditor.js"></script>
+
+    <script type="text/javascript" src="/assets/js/unitegallery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/ug-theme-default.js"></script>
+    <script type="text/javascript" src="/assets/js/ug-theme-tilesgrid.js"></script>
+    <script type="text/javascript" src="/assets/js/ug-theme-grid.js"></script>
+
+    <script type="text/javascript" src="/assets/js/tableToExcel.js"></script><!--https://github.com/linways/table-to-excel-->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script> -->
+
+
+
+
+
+<!-- <link rel="stylesheet" href="/assets/css/bootstrap-select.min.css"> -->
+<!-- <script type="text/javascript" src="/assets/js/bootstrap-select.min.js"></script> -->
+
+<!-- <script type="text/javascript" src="/assets/js/pt-br.js"></script> -->
+
+
+    <script>
+        var BASE_URL = "https://global.grupoconstruserv.eng.br/";
+
+        // request permission on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!Notification)
+            {
+                alert('Seu navegador não suporta o Global. Tente o Firefox ou Chrome.');
+                return;
+            }
+
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission();
+            }
+        });
+
+        function notificarUsuario(link, mensagem, titulo) {
+            if (Notification.permission !== "granted")
+                Notification.requestPermission();
+            else {
+                if (titulo === undefined || titulo === "")
+                {
+                    titulo = "Sistema de Gestão e Monitoramento";
+                }
+                if (mensagem === undefined || mensagem === "")
+                {
+                    mensagem = "Nova notificação de Global.";
+                }
+                var notification = new Notification(titulo, {
+                    icon: 'https://global.grupoconstruserv.eng.br/favicon/favicon-16x16.png',
+                    body: mensagem,
+                });
+
+                notification.onclick = function () {
+                    if (link === undefined)
+                    {
+                        location.href = 'https://global.grupoconstruserv.eng.br/index';
+                        return;
+                    }
+
+                    menuAjax(link);
+                };
+
+            }
+
+        }
+
+
+    function imgPrev(input) {
+        var src = '';
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                src =  e.target.result
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        return src;
+    }
+    </script>
+    <style>
+        .navbar-fixed-top, .navbar-fixed-bottom {
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            left: 281px;
+        }
+        #wrapper #sidebar-nav, #wrapper .main {
+        padding-top: 0px;
+        }
+        .notify-normal {
+            background-color: #d9edf7;
+        }
+
+        a.notify-normal:hover {
+            background-color: #afd9ee;
+        }
+
+        .notify-alert {
+            background-color: #fcf8e3;
+        }
+
+        a.notify-alert:hover {
+            background-color: #f7ecb5;
+        }
+
+        .notify-danger {
+            background-color: #f2dede;
+        }
+
+        a.notify-danger:hover {
+            background-color: #e4b9b9;
+        }
+
+        .lnr-fw {
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+<!-- Carrega a fonte o mais rápido possível -->
+<div style="opacity: 0; display: none;">
+    <span style="font: normal normal normal 14px/1 Font Awesome\ 5 Free"></span>
+    <span style="font: normal normal normal 14px/1 Font Awesome\ 5 Brands"></span>
+    <i class="fa fa-headset"></i>
+</div>
+<!-- WRAPPER -->
+<script>
+    var SEPARADOR_NOTIFICACAO = "<!-- more -->";
+    function marcarLida(notificacao, navegar_para_link) {
+        $.get("https://global.grupoconstruserv.eng.br/notificacao/index/marcar_lida/" + notificacao, function(data) {
+            var contador = $('#eventos_count');
+            var html = contador.html();
+            contador.html(html - 1);
+            if (html - 1 === 0) {
+                contador.hide();
+            }
+
+            if (navegar_para_link === undefined) {
+                navegar_para_link = true;
+            }
+            if (!navegar_para_link) {
+                return;
+            }
+
+            var link = $("#notificacao_" + notificacao).data("link");
+            if ((link || undefined !== undefined) && link !== "") {
+                menuAjax(link);
+            }
+        });
+    }
+</script>
+    <div id="wrapper">
+        
+    <div class="modal fade" id="suporteModal" tabindex="-1" role="dialog" aria-labelledby="suporteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="suporteModalLabel">Monitoramento Construserv</h4>
+                </div>
+                <div class="modal-body">
+                    <p><a href="tel:+554430136858"><i class="fas fa-fw fa-phone"></i> (44) 3026-6844</a></p>
+                    <p><a href="tel:+55449991692833"><i class="fab fa-whatsapp"></i> (44) 9 9169-2833</a></p>
+                    <p><a href="mailto:temporeal@construservenergia.com.br?subject=Monitoramento Construserv - Suporte"><i class="fa fa-fw fa-envelope"></i>temporeal@construservenergia.com.br</a></p>
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div id="navbar-menu">
+
+
+
+                <ul class="nav navbar-nav navbar-right">
+                
+
+                <li style="width: 62px;">
+                        <a href="#" class="icon-menu" id="alert_sound"><i id="alert_sound_icon" class="fa fa-volume-up"></i></a>
+                        <audio id="alert_sound_player" loop="loop" autoplay muted>
+                            <source src="/assets/media/alerta.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="alert_global_player">
+                            <source id="alert_global_player_src" type="audio/mpeg">
+                        </audio>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="far fa-bell"></i>
+                            <span class="badge bg-danger" id="eventos_count"></span>
+                        </a>
+                        <ul class="dropdown-menu notifications" id="notificacoes">
+                                                            <li>
+                                    <a href="#" class="notification-item">
+                                        Sem alertas no momento.
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="far fa-question-circle"></i>
+                            <span>Ajuda/Suporte</span>
+                            <i class="icon-submenu fas fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- <li><a href="#">Manual</a></li> -->
+                            <li><a href="#" data-toggle="modal" data-target="#suporteModal">Suporte</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="saaelençois">
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="16" fill="#00B6CC"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 14.7524C17.9051 14.7524 19.4495 13.2079 19.4495 11.3028C19.4495 9.39769 17.9051 7.85327 16 7.85327C14.0949 7.85327 12.5505 9.39769 12.5505 11.3028C12.5505 13.2079 14.0949 14.7524 16 14.7524ZM12.4037 16.2202C9.9716 16.2202 8 18.1918 8 20.6239V22.9725C8 23.6211 8.52575 24.1468 9.17431 24.1468H22.8257C23.4742 24.1468 24 23.6211 24 22.9725V20.6239C24 18.1918 22.0284 16.2202 19.5963 16.2202H12.4037Z" fill="#F5F5F5"/>
+                            </svg>
+                                                        <!-- <i class="icon-submenu lnr lnr-chevron-down"></i> -->
+                        </a>
+                        <ul class="dropdown-menu">
+                                                                                                                    <li>
+                                <a href="https://global.grupoconstruserv.eng.br/index/logout">
+                                    <i class="lnr lnr-exit"></i> <span>Sair</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        var ultima_notificacao = 0;
+
+        var soundSrc = document.getElementById("alert_global_player_src");
+        soundSrc.src = pegarSomAlerta('https://global.grupoconstruserv.eng.br/assets/media/');
+        var sound = true;
+        var soundPlayer = document.getElementById('alert_sound_player');
+        function muteAlarm() {
+            $('#alert_sound_icon')
+                .removeClass('fa-volume-up')
+                .addClass('fa-volume-off');
+            soundPlayer.currentTime = 0;
+            soundPlayer.muted = true;
+            soundPlayer.pause();
+        }
+
+        function playAlarm() {
+            $('#alert_sound').show();
+            $('#alert_sound_icon')
+                .removeClass('fa-volume-off')
+                .addClass('fa-volume-up');
+            soundPlayer.play();
+            soundPlayer.muted = false;
+        }
+
+        $('#alert_sound').on({
+            click: function() {
+                sound = !(sound);
+                var cookie_value = !sound ? "S" : "N";
+                setCookie(cookie_mute_alarm, cookie_value, 3650);
+                if (sound) {
+                    playAlarm();
+                } else {
+                    muteAlarm();
+                }
+            }
+        }) .hide();
+
+        // coletarEventos();
+        // setInterval(function() {
+        //    coletarEventos();
+        // }, 120000);
+
+        function coletarEventos(){
+            $.ajax({
+                url: 'https://global.grupoconstruserv.eng.br/scde/index/eventos/408',
+                type:'GET',
+                dataType:'json',
+                success:function(retornos){
+                    if (retornos.qtde === 0) {
+                        muteAlarm();
+                        $('#alert_sound').hide();
+                        $('#eventos_count').html('').hide();
+                        $('#notificacoes').html('').append(
+                            '                                <li>\n' +
+                            '                                    <a href="#" class="notification-item">\n' +
+                            '                                        Sem alertas no momento.\n' +
+                            '                                    </a>\n' +
+                            '                                </li>');
+                    } else {
+                        var should_mute = getCookie(cookie_mute_alarm);
+                        if ((should_mute || undefined) !== undefined && should_mute !== "S" && retornos.medidores > 0) {
+                            playAlarm();
+                        }
+                        $('#eventos_count')
+                            .addClass('badge')
+                            .addClass('bg-danger')
+                            .html('')
+                            .append(retornos.qtde_nao_lidas);
+                        if (retornos.qtde_nao_lidas > 0) {
+                            $('#eventos_count').show();
+                        } else {
+                            $('#eventos_count').hide();
+                        }
+                        var alertas = '';
+                        var maior_notificacao = 0;
+                        var qt_novas_notificacoes = 0;
+                        retornos.global.forEach(function(global) {
+                            if (alertas !== '') {
+                                alertas += '\n';
+                            }
+
+                            notification_color = "";
+                            if (global.lida !== "S") {
+                                notification_color = 'notify-normal';
+                            }
+                            var link = global.link !== "" ? "data-link=\"" + global.link + "\"" : "";
+                            var texto = global.texto.substring(0, global.texto.indexOf(SEPARADOR_NOTIFICACAO));
+                            if (texto === "") {
+                                texto = global.texto;
+                            }
+                            alertas += '<li class="' + notification_color + '">' +
+                                '<a id="notificacao_' + global.id + '" href="#" class="notification-item" onclick="marcarLida(' + global.id + ')" ' + link + '>' +
+                                dateFromString(global.enviado_em) + '<br/>' +
+                                texto +
+                                '</a>' +
+                                '</li>';
+                            if (global.lida !== "S") {
+                                qt_novas_notificacoes++;
+                            }
+                            if (global.lida !== "S" && global.id >= maior_notificacao) {
+                                maior_notificacao = global.id;
+                            }
+                        });
+                        if (maior_notificacao > ultima_notificacao) {
+                            ultima_notificacao = maior_notificacao;
+                            document.getElementById("alert_global_player").play();
+                            notificarUsuario('https://global.grupoconstruserv.eng.br/notificacao/index',
+                                _n(qt_novas_notificacoes,
+                                    "Você tem %d novo recado.",
+                                    "Você tem %d novos recados"))
+                        }
+                        retornos.medidores.forEach(function(retorno) {
+                            if (alertas !== '') {
+                                alertas += '\n';
+                            }
+                            var dataOcorrencia = new Date(retorno.data_ocorrencia);
+                            var dataFormatada  = ("0"+dataOcorrencia.getDate()).slice(-2)+'/'+
+                                                 ("0"+(dataOcorrencia.getMonth()+1)).slice(-2)+'/'+
+                                                 dataOcorrencia.getFullYear()+' '+
+                                                 ("0"+dataOcorrencia.getHours()).slice(-2)+':'+
+                                                 ("0"+dataOcorrencia.getMinutes()).slice(-2)+':'+
+                                                 ("0"+dataOcorrencia.getSeconds()).slice(-2);
+
+                            notification_color = 'notify-normal';
+                            alertas +=
+                                '                                <li class="' + notification_color + '">\n' +
+                                '                                    <a href="#" class="notification-item">\n';
+                            if (retorno.evento === 'LINK') {
+                                alertas += '                                            <span class="fa fa-signal text-danger"></span>\n';
+                            } else {
+                                alertas += '                                            <span class="fa desconectado-16 text-danger notify-icon" style="width: 14px"><i></i></span>\n';
+                            }
+                            alertas += '                                        ' + retorno.identificacao_medidor + '<br/>\n';
+                            alertas += retorno.evento === 'LINK' ? 'Link indisponível' : 'Porta inacessível';
+                            alertas += '\n                                        desde\n' +
+                                       '                                        ' + dataFormatada + '\n' +
+                                       '                                    </a>\n' +
+                                       '                                </li>';
+                        });
+                        $('#notificacoes').html('').append(alertas);
+                    }
+                }
+            });
+        }
+
+        var should_mute = getCookie(cookie_mute_alarm);
+        if ((should_mute || undefined) !== undefined && should_mute === "S") {
+            soundPlayer.addEventListener('canplaythrough', function() {
+                muteAlarm();
+            }, false);
+        }
+
+            </script>
+    <!-- END NAVBAR -->
+<!-- START LEFT SIDEBAR -->
+<div class="sidebar" style="border-radius: 0px 24px 24px 0px; background: linear-gradient(180deg, rgba(9, 9, 9, 0.49) 0%, #000000 100%); ">
+    <!-- <tree
+    class="nav"
+    :data="treeData"
+            :options="treeOptions">
+            <span class="collapsed" slot-scope="{ node }">
+                <template v-if="node.data.isRoot">
+                    <i class="fas fa-fw fa-home"></i>
+                    {{ node.text }}
+                    <span class="release" v-if="!node.hasChildren()">
+                        <i class="icon-submenu fa fa-angle-left">
+                    </span>
+                </template>
+                <template v-else>
+                    <i class="fas fa-fw fa-home"></i>
+                    {{ node.text }}
+                </template>
+            </span>
+        </tree> -->
+    <div class="btn-group" style="position: absolute;display: block;left: 250px;width: 200px;top:14px">
+        <button type="button" id="clickOn" class="btn-toggle-fullwidth toggle-sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <button type="button" id="clickOff" class="btn-toggle-fullwidth toggle-sidebar" style="display: none;">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        
+    </div>
+
+    <div class="fixa">
+        <div class="brand">
+
+           
+            <a href="https://global.grupoconstruserv.eng.br/"><img src="https://global.grupoconstruserv.eng.br/assets/media/logoLogin.png" alt="Construserv Logo" width="230" height="80" class="img-responsive logo"></a>
+           
+        </div>
+        <div class="nome-user">
+            <p>Olá, <strong>saaelençois</strong></p>
+        </div>
+    </div>
+    <div id="sidebar-nav" class="sidebar scroll" style="overflow-x: unset; overflow-y: auto; padding: 0px 0px 165px 0px;">
+        <nav>
+            <div class="nav teste" style="background: linear-gradient(180deg, rgba(9, 9, 9, 0.49) 0%, #000000 100%);">
+                <input type="text" id="searchMenu" class="form-control" style="color: #999;width: 84%;margin: 10px auto;background: rgba(0,0,0,0.2);border: solid 1px;display:none; height:30px;">
+
+                
+                                    <li>
+                        <a href="#gestaotelemetria" class="collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="gestaotelemetria" title="Gestão de telemetria"><i class="fas fa-fw fa-pager"></i> Gestão de Telemetria <i class="icon-submenu fa fa-angle-left"></i></a>
+                        <ul id="gestaotelemetria" class="nav collapse">
+                                                                                                                                    <div style="margin-left: 10px;">
+                                        <input class="estacao-filtro" placeholder="Filtro" />
+                                                                                        <li class="nav-sub usinaitem">
+                                                    <span data-toggle="collapse" href="#usina341" role="button" aria-expanded="false" aria-controls="usina341" title="Rio Lençóis"><i class="fa fa-fw fa-industry"></i> Rio Lençóis <i class="icon-submenu fa fa-angle-left"></i></span>
+                                                    <ul id="usina341" class="nav collapse">
+                                                                                                                        <li class="nav-sub estacaoitem">
+                                                                    <span class="item linkmenu" data-link="/telemetria/geral/dados/1882/0/0/1" title="Lençóis Paulista Jusante [S0399]  {1882}">
+                                                                        <i class="fa fa-fw fa-flag"></i>
+                                                                        Lençóis Paulista Jusante                                                                    </span>
+                                                                </li>                                                                <li class="nav-sub estacaoitem">
+                                                                    <span class="item linkmenu" data-link="/telemetria/geral/dados/1600/0/0/1" title="Lençóis Paulista Montante [C0085]  {1600}">
+                                                                        <i class="fa fa-fw fa-flag"></i>
+                                                                        Lençóis Paulista Montante                                                                    </span>
+                                                                </li>                                                        
+                                                                                                            </ul>
+                                                </li>
+                                                                                                                        </div>
+                                
+                                                                                                                    <li class="nav-sub"><span class="item linkmenu" data-link="https://global.grupoconstruserv.eng.br/telemetria/geral/grafico_agrupado_form" title="Gráficos comparativos"><i class="fa fa-fw fa-chart-line"></i>Gráficos comparativos</span></li>
+                            
+                            
+                                                            <li class="nav-sub"><span class="item linkmenu" data-link="https://global.grupoconstruserv.eng.br/telemetria/geral/downloads_form" title="Baixar dados das estações"><i class="fa fa-fw fa-arrow-circle-down"></i> Baixar dados</span></li>
+                            
+                            
+                                                            <li class="nav-sub"><span class="item linkmenu" data-link="https://global.grupoconstruserv.eng.br/telemetria/geral/recentes" title="Resumo dos últimos dados das estações"><i class="far fa-fw fa-newspaper"></i> Últimas medições</span></li>
+                            
+                            
+                            
+                                                    </ul>
+                    </li>
+                
+                
+                
+                
+                
+                
+                
+
+                                
+
+                
+                
+                
+                
+                
+                
+
+                            </div>
+        </nav>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+                        $("#index").addClass('in collapsed');
+                    
+    
+    
+
+    $(".estacao-filtro").on('keyup', function() {
+        var text = $(this).val();
+        var estacoes = $(this).parent('div').find('.linkmenu');
+
+        $(this).parent('div').find('ul').addClass('in').attr('aria-expanded', 'true');
+        $(this).parent('div').find('a').removeClass().addClass('active').attr('aria-expanded', 'true');
+
+        var $matchingListElements = estacoes.filter(function(i, li) {
+            var listItemText = $(li).attr('title').toUpperCase(),
+                searchText = text.toUpperCase();
+            // retuajustes/contrarn ~listItemText.indexOf(searchText);
+            return ~listItemText.indexOf(searchText)
+        });
+        estacoes.hide();
+        $matchingListElements.show();
+
+        var estacao = null;
+        var usinas = $(".usinaitem")
+        var $matchingUsinas = usinas.filter(function(i, li) {
+            var estacao = $(li).find('.estacaoitem').find('.item').css('display'),
+                search = 'none';
+            return ~estacao.indexOf(search);
+        });
+        usinas.show();
+        $matchingUsinas.hide();
+
+    });
+    $('#buscarEstacoes').keyup(function(evt) {
+        var keycode = (evt.keyCode ? evt.keyCode : evt.which);
+        if (keycode == '27') {
+            $('#buscarEstacoes').val('');
+        }
+    });
+
+
+    // $('#estacoesSidebarMultiselect').multiselect({
+    //     buttonClass: 'btn',
+    //     buttonWidth: '100%',
+    //     enableFiltering: true,
+    //     includeResetOption: true,
+    //     filterPlaceholder: 'Filtar',
+    //     enableCaseInsensitiveFiltering: true,
+    //     buttonText: function(options) {
+    //         if (options.length == 0) {
+    //             return 'Nenhuma estação selecionada';
+    //         } else if (options.length == 1) {
+    //             return $(options[0]).text();
+
+    //         } else {
+    //             return options.length + ' estações selecionadas';
+    //         }
+    //     },
+    //     onChange: function(op) {
+    //         //console.log(op.val());
+    //         menuAjax('telemetria/geral/dados/' + op.val() + '/today/today/1');
+    //     }
+
+    // }).on("click", function() {
+    //     $(this).parent().addClass("open");
+    // });
+
+    var seta = $('#seta-estacao');
+
+    $('#buscarEstacoes').autocomplete({
+        minLength: 3,
+        source: function(request, response) {
+            $.ajax({
+                url: 'https://global.grupoconstruserv.eng.br/telemetria/geral/buscaEstacao ',
+                dataType: 'json',
+
+                async: true,
+                type: 'post',
+                data: {
+                    'estacao': $('#buscarEstacoes').val()
+                },
+                beforeSend: function() {
+                    seta.html('<i class="fas fa-spinner fa-spin"></i>');
+                },
+                success: function(data) {
+                    seta.html('<i class="fas fa-arrow-circle-right"></i>');
+                    response($.map(data, function(item) {
+                        var tipos = [];
+                        if (item.tipo) {
+                            var tipos = item.tipo.split(',');
+
+                        }
+                        sep = '';
+                        teleseed = item.teleseed ? item.teleseed.replace('null', '') : '';
+                        txt_tcp = item.txt_tcp ? item.txt_tcp.replace('null', '') : '';
+                        if (teleseed != '' && txt_tcp != '') sep = ' - ';
+
+                        if (
+                            tipos.includes("1") ||
+                            tipos.includes("2") ||
+                            tipos.includes("3") ||
+                            tipos.includes("4") ||
+                            tipos.includes("5") ||
+                            tipos.includes("9")
+                        ) {
+                            return {
+                                codigo: item.codigo,
+                                label: item.nome + ' [' + teleseed + sep + txt_tcp + ']' + ' ' + item.usuario,
+                                title: item.nome + ' [' + teleseed + sep + txt_tcp + ']' + ' ' + item.usuario,
+
+                            }
+                        }
+
+                    }));
+                },
+                error: function() {
+                    seta.html('<i class="fas fa-arrow-circle-right"></i>');
+                }
+            });
+        },
+        select: function(event, ui) {
+            $('#buscarEstacoes').attr('title', ui.item.title);
+            $('input[name=buscarEstacoesCodigo]').val(ui.item.codigo);
+            menuAjax('telemetria/geral/dados/' + ui.item.codigo + '/today/today/1');
+        }
+    });
+
+    seta.click(function() {
+        var codigo = $('input[name=buscarEstacoesCodigo]').val();
+        //var codigo = $('#estacoesSidebarMultiselect').val();
+        menuAjax('telemetria/geral/dados/' + codigo + '/today/today/1');
+    });
+
+
+    $('.sidebar .btn-toggle-fullwidth').click(function(e) {
+        e.preventDefault();
+        $('#clickOn').toggle();
+        $('#clickOff').toggle();
+
+    })
+
+
+    jQuery("#searchMenu").keyup(function() {
+        var filter = jQuery(this).val();
+        jQuery(".nav li").each(function() {
+            if (jQuery(this).text().search(new RegExp(filter, "i")) < 0) {
+                jQuery(this).hide();
+            } else {
+                jQuery(this).show()
+            }
+        });
+    });
+
+    $(".navbar").dblclick(function() {
+        $("#searchMenu").toggle('slow').focus();
+    });
+
+    $(document).on('click', '.nav-sub span.linkmenu', function() {
+        $("#searchMenu").val('').keyup().hide('slow');
+    });
+
+    $(".nav-sub > span, .nav-sub > a").click(function() {
+
+        $(".nav-sub > span, .nav-sub > a").not(this).parent('li').removeClass("linkmenu-active");
+        $(this).parent('li').addClass("linkmenu-active");
+
+    })
+</script>
+<!-- END LEFT SIDEBAR -->
+            
+<style>
+.btn-block {
+    font-size: 17px;
+    color: #3e3b3b !important;
+    font-weight: 600;
+    text-decoration: none !important;
+    text-align: inherit;
+}
+.legendas {
+    padding: 8px;
+    margin-top: 39px;
+}
+.card-body {
+    padding-right: 30px;
+}
+.scroll::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: #e5e5e5;
+}
+.scroll::-webkit-scrollbar-track {
+    background: #e5e5e5;
+}
+.scroll::-webkit-scrollbar-track-piece {
+    background: #e5e5e5;
+}
+.scroll::-webkit-scrollbar-thumb {
+    background: #c2c6ca;
+    border-radius: 8px;
+}
+.scroll::-webkit-scrollbar-corner {
+    background: #FF0000;
+    border-radius: 8px;
+}
+</style>
+<!-- MAIN -->
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content" id="main_content">
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div id="conteudo" class="panel panel-headline" style="background: #E5E5E5;">
+                <div class="panel-heading">
+                    <h1 class="panel-title" style="color: #0E1012; font-weight: 700; font-size: 24px; line-height: 34px;">Sistema de Gestão e Monitoramento</h1>
+                    <p class="panel-subtitle"></p>
+                </div>
+                <div class="panel-body">
+
+                                            <div class="row">
+                            <section class="col-md-6 connectedSortable" id="secao_2">
+
+                                                                    <div class="box box-success" id="outros_25">
+                                        <div class="box-header">
+                                            <div class="pull-right box-tools">
+                                                <!-- <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse"
+                                                    data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>-->
+                                            </div>
+
+                                            <i class="fa fa-cloud-rain"></i>
+
+                                            <h3 class="box-title">Precipitações</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="panel-body" id="map" style="height: 500px;">
+                                                    <div id="popup" class="tooltip"></div>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    var estacoes = [                                                        ,{
+                                                            codigo   : 1882,
+                                                            nome     : 'Lençóis Paulista Jusante',
+                                                            latitude : -22.601361111111,
+                                                            longitude: -48.767722222222,
+                                                            cidade   : 'Lençóis Paulista',
+                                                        },                                                        ,{
+                                                            codigo   : 1600,
+                                                            nome     : 'Lençóis Paulista Montante',
+                                                            latitude : -22.596186111111,
+                                                            longitude: -48.803375,
+                                                            cidade   : 'Lençóis Paulista',
+                                                        },                                                    ];
+
+                                                    var vectorSource = new ol.source.Vector({
+                                                        //create empty vector
+                                                    });
+
+                                                    var vectorLayer = (new ol.layer.Vector({
+                                                        source: vectorSource
+                                                    }));
+
+
+                                                    var myIconFullscreen = document.createElement("span");
+
+
+                                                    var map = new ol.Map({
+                                                        controls: ol.control.defaults().extend([
+                                                            new ol.control.FullScreen({tipLabel: 'Tela cheia'}),
+                                                            new ol.control.Zoom({zoomInTipLabel: 'Fechar zoom', zoomOutTipLabel: 'Abir zoom'}),
+                                                            new ol.control.Attribution({tipLabel: 'Atributios'})
+                                                        ]),
+                                                        layers: [new ol.layer.Tile({source: new ol.source.OSM()}), vectorLayer],
+                                                        target: document.getElementById('map'),
+                                                    });
+
+                                                    var element = document.getElementById('popup');
+
+
+                                                    var popup = new ol.Overlay({
+                                                        element: element,
+                                                        positioning: 'bottom-center',
+                                                        stopEvent: false
+                                                    });
+
+
+                                                    map.addOverlay(popup);
+
+                                                    // display popup on click
+                                                    map.on('click', function (evt) {
+                                                        $(element).popover('destroy');
+                                                        setTimeout(function() {
+                                                            var feature = map.forEachFeatureAtPixel(evt.pixel,
+                                                                function (feature, layer) {
+                                                                    return feature;
+                                                                });
+                                                            if (feature) {
+                                                                popup.setPosition(evt.coordinate);
+
+                                                                $(element).popover({
+                                                                    'placement': 'top',
+                                                                    'html': true,
+                                                                    'container': 'body',
+                                                                    'content': '<a class="linkmenu" href="#" data-link="telemetria/geral/dados/' + feature.get('codigo') + '/30-09-2025/30-09-2025/1">' + feature.get('nome') + '</a><br>' +
+                                                                        (feature.get('cidade') == null ? '' : feature.get('cidade'))
+                                                                });
+                                                                $(element).popover('show');
+                                                            } else {
+                                                                $(element).popover('destroy');
+                                                            }
+                                                        }, 250)
+                                                    });
+
+
+                                                    // change mouse cursor when over marker
+                                                    map.on('pointermove', function (e) {
+                                                        if (e.dragging) {
+                                                            $(element).popover('destroy');
+                                                            return;
+                                                        }
+                                                        var pixel = map.getEventPixel(e.originalEvent);
+                                                        var hit = map.hasFeatureAtPixel(pixel);
+                                                        map.getTarget().style.cursor = hit ? 'pointer' : '';
+                                                    });
+
+                                                    $("#map").on('remove', function (evt) {
+                                                        //limpar os tooltips quando o mapa é recarregado
+                                                        $(element).popover('destroy');
+                                                    });
+
+                                                                                                        var coordMin = ol.proj.fromLonLat([-48.803375, -22.601361111111], 'EPSG:3857');
+                                                    var coordMax = ol.proj.fromLonLat([-48.767722222222, -22.596186111111], 'EPSG:3857');
+                                                    var extent=[coordMin[0],coordMin[1],coordMax[0],coordMax[1]];
+                                                    map.getView().fit(extent, map.getSize());
+
+                                                    for (var item in estacoes) {
+                                                        var estacao = estacoes[item];
+
+                                                        var iconFeature = new ol.Feature({
+                                                            geometry: new ol.geom.Point(ol.proj.transform([estacao.longitude, estacao.latitude], 'EPSG:4326', 'EPSG:3857')),
+                                                            nome: estacao.nome,
+                                                            codigo: estacao.codigo,
+                                                            cidade: estacao.cidade,
+                                                            uf: estacao.uf,
+                                                            usuario: estacao.usuario
+                                                        });
+
+                                                        var estilo = new ol.style.Style({
+                                                            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                                                                anchor: [0.1, 0.1],
+                                                                anchorXUnits: 'fraction',
+                                                                anchorYUnits: 'pixels',
+                                                                opacity: 0.55,
+                                                                src: '/assets/media/pontoVermelho.png',
+                                                                scale: 1
+                                                            })),
+                                                        });
+
+                                                        // THIS IS NEW - add each style individually to the feature
+                                                        iconFeature.setStyle(estilo);
+                                                        // First add the feature when it has got its style
+                                                        iconFeature.setId(estacao.codigo);
+                                                        vectorSource.addFeature(iconFeature);
+
+                                                        // map set zoom
+                                                        //map.getView().setZoom(11);
+
+                                                        // make the map's view to zoom and pan enough to display all the points
+                                                        map.getView().fit(vectorSource.getExtent(), map.getSize());
+
+                                                        //porem se tiver somente 1 ponto setar zoom manualmente
+                                                        if(estacoes.length < 2) {
+                                                            map.getView().setZoom(13);
+                                                        }
+                                                    }
+
+                                                </script>
+                                            </div>
+                                            <div class="apresentacaoChuvas">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p style="font-weight: 400; font-size: 18px; color: #0E1012;">Chuvas nos últimos dias: <small>(Período: 00:00 a 23:59)</small></p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                                                                                <p>
+                                                                <span style="font-weight: 600; font-size: 16px; color: #0E1012; cursor: pointer;" data-toggle="collapse" data-target="#collapseExample2025-09-30" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <i class="fa fa-chevron-down"></i> 30/09/2025                                                                </span>
+                                                            </p>
+                                                            <div class="collapse in" id="collapseExample2025-09-30">
+                                                                <div class="card card-body">
+                                                                                                                                    </div>
+                                                            </div>
+                                                            
+                                                                                                                <p>
+                                                                <span style="font-weight: 600; font-size: 16px; color: #0E1012; cursor: pointer;" data-toggle="collapse" data-target="#collapseExample2025-09-29" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <i class="fa fa-chevron-down"></i> 29/09/2025                                                                </span>
+                                                            </p>
+                                                            <div class="collapse in" id="collapseExample2025-09-29">
+                                                                <div class="card card-body">
+                                                                                                                                    </div>
+                                                            </div>
+                                                            
+                                                                                                                <p>
+                                                                <span style="font-weight: 600; font-size: 16px; color: #0E1012; cursor: pointer;" data-toggle="collapse" data-target="#collapseExample2025-09-28" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <i class="fa fa-chevron-down"></i> 28/09/2025                                                                </span>
+                                                            </p>
+                                                            <div class="collapse in" id="collapseExample2025-09-28">
+                                                                <div class="card card-body">
+                                                                                                                                    </div>
+                                                            </div>
+                                                            
+                                                                                                    </div>
+                                                
+    
+                                                <div class="legendas">
+                                                    <p style="color: #0E1012; font-size: 14px;">Legenda:</p>
+                                                    <div class="titulo_legenda">
+                                                        <span class="pluv-20mm" style="padding: 5px;">até 20mm</span>
+                                                        <span class="pluv-40mm" style="padding: 5px;">até 40mm</span>
+                                                        <span class="pluv-60mm" style="padding: 5px;">até 60mm</span>
+                                                        <span class="pluv-60mm-plus" style="padding: 5px;">60mm +</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                                            </section>
+                            <section class="col-md-6 connectedSortable" id="secao_1">
+                                <div class="box box-primary" id="noticias_1">
+                                    <div class="box-header">
+                                        <div class="pull-right box-tools">
+                                            <!-- <button type="button" class="btn btn-sm pull-right" data-widget="collapse"
+                                                    data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+                                              <i class="fa fa-minus"></i>
+                                          </button> -->
+                                        </div>
+                                                                            </div>
+                                    <div class="box-body">
+                                                                            </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+    </div>
+</div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <style>
+        .texto-branco {
+            color: #FFF;
+        }
+    </style>
+    <script>
+        /* $('.connectedSortable').sortable({
+            placeholder         : 'sort-highlight',
+            connectWith         : '.connectedSortable',
+            handle              : '.box-header, .nav-tabs',
+            forcePlaceholderSize: true,
+            zIndex              : 999999,
+            update: function(e, ui) {
+                console.log((new Date()).getMilliseconds(), $(this).sortable('serialize'))
+            }
+        });
+        $('.connectedSortable .box-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move'); */
+
+        var requisicoes = [];
+        var can_refresh_index = true;
+
+        $('a, button').click(function () {
+            if ($(this).data("link") !== undefined) {
+                can_refresh_index = false;
+                requisicoes.forEach(function (request, index) {
+                    request.abort();
+                    requisicoes.splice(index, 1);
+                });
+            }
+        });
+
+
+
+
+    </script>
+		<div class="modal fade" id="modalCarregando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		            <div class="modal-body">
+		                <button id="ajaxCancelar" type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                    <span aria-hidden="true">&times;</span>
+		                </button>
+		                <div id="container" style="text-align: center;">
+		                    <img src="https://global.grupoconstruserv.eng.br/assets/media/loaderText.gif" alt="carregando" style="height: 20px" />
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+		<img id="progressgif" src="https://global.grupoconstruserv.eng.br/assets/media/progress.gif" />
+
+		<div id="msgfloat" style="position:fixed; top:10px; left:50%;  z-index:2000;  padding:5px; display: none">
+		    <div class="divtable">
+		        <div id="msgfloat_text"  class="divcell" style="border: 1px solid; height: 100%;text-align: center;vertical-align: middle;"></div>
+                <span id="msgfloat_btn" class="text-white link" style="width: 10px; padding-left: 7px;color: #ddc4c4;"><i class="fa fa-times"></i></span>
+		    </div>
+            <div class="divtable" style="height: 4px;display: flex;">
+                <div id="progressoMsgFloat" style="height: 2px; width: 100%;"></div>
+            </div>
+		</div>
+
+		<footer>
+			<div class="container-fluid text-right">
+				<p class="copyright">&copy; 2025 <a href="https://www.grupoconstruserv.eng.br" target="_blank" class="no-link">Grupo Construserv</a>. Todos os direitos reservados.</p>
+			</div>
+		</footer>
+	</div>
+<!-- END WRAPPER -->
+
+
+    
+
+<script>
+var urlHistory = [];
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $('[rel=tooltip]').tooltip('disable');
+
+    $('body').on('click change','.linkmenu',function(){
+        //se o elemento com .linkmentu estiver sobre .sidebar
+
+
+        var url = $(this).attr('data-link');
+
+        menuAjax(url);
+      
+        $('html, body').animate({
+            scrollTop: $('#conteudo').offset().top - 100
+        }, 10, 'swing');
+    });
+
+    function menuAjax(url, callback=null, metodo='', dados={}){
+ 
+    
+        // remove .modal-backdrop que fica aberto caso o modal não for fechado pelo botão fechar
+        $(".modal-backdrop").remove();
+        $("body").css('overflow', 'auto');
+  
+        $("#aside").remove();
+        var _extra = null;
+        var hisCount = 0;
+        if(url){
+            if (url.indexOf("?extra") > -1) {
+                _extra = url.substr(url.indexOf("?extra") + 7);
+                url = url.substr(0, url.indexOf("?extra"));
+            }
+        }
+
+        let request = {
+            method:  'GET',
+        };
+
+        if(metodo.toUpperCase() == 'POST'){
+            var form = new FormData();
+            for (let key in dados) {
+                form.append(key, dados[key]);
+            }
+            request["method"] = 'POST' ;
+            request["body"]   = form;
+        }
+
+        let myHeaders = new Headers();
+        if ((_extra || undefined) !== undefined) {
+            myHeaders.append("ConstruservExtra", _extra);
+        }
+
+        request["headers"] = myHeaders;
+        
+        $("#msgfloat").css('display', 'none');
+        carregando('show');
+
+        fetch(url, request).then(function(response) {
+            if (!response.ok) {
+                if (response.statusText === 'timeout') {
+                    response.statusText = 'Tempo esgotado';
+                }
+
+                show_message(response.status +' '+ response.statusText, 'danger');
+                return;
+            }
+
+            if (response.redirected) {
+                window.location.href = response.url + '?r=' + new Date().getTime();
+            } else {
+                response.text().then(function (html) {
+                    // matarTimersRodando();
+                    $("#msgfloat").css('display', 'none');
+                    carregando('hidden');
+                    $("#conteudo").html(html);
+                    $('#conteudo').animate({scrollTop: $("#conteudo").offset().top});
+                    
+                    if (callback !== null) {
+                        callback();
+                    }
+                });
+            }
+        });
+
+        /**
+        * Histórico de navegação
+         */
+        //adiciona url no inicio do array
+        $("#urlatual").html(url);
+        urlHistory.unshift(url);
+        
+        //elimina valores undefined
+        urlHistory = urlHistory.filter(function(el){
+            return el !== undefined;
+        });
+        
+        //limita em 21 elementos
+        urlHistory = urlHistory.slice(0,21);
+
+        //seta segundo elemento no botão voltar. O primeiro elemento é a pagina atual
+        if(urlHistory.length > 1){
+            $("#voltar").attr('data-link', urlHistory[1]).attr('title', urlHistory[1]);
+        }
+
+        //limpa botão voltar historico
+        $("#voltarHistorico li").remove();
+
+        //seta os elementos no voltarHistorico
+        for(var i=0; i< urlHistory.length; i++){
+            if(i>0) {
+                hisCount++
+                $("#voltarHistorico").append('<li class="linkmenu" data-link="'+ urlHistory[i] +'"><span>'+(hisCount)+' - '+ urlHistory[i].replace('https://global.grupoconstruserv.eng.br/','') +'</li>') ;
+            }
+        }
+    }
+
+    function show_message(texto, classe='info', interval=null, redirect=null){
+        if(interval === null){
+            interval = texto.length;
+        }
+
+        carregando('hidden');
+        if (timerMensagem !== 0) {
+            clearInterval(timerMensagem);
+        }
+
+        $("#msgfloat").removeClass().addClass('alert alert-'+classe);
+        $("#msgfloat_text").html(texto);
+
+        var bodyCenter = $("body").width()/2;
+        var msgfloatCenter = $("#msgfloat").outerWidth()/2;
+        var msgfloatPosition = bodyCenter - msgfloatCenter;
+
+        $("#msgfloat").css('display', 'block');
+        $("#msgfloat").css('left', msgfloatPosition +'px');
+        progressoMsgFloat.css("width", "100%");
+        progressoMsgFloat.css("background-color", "#3C763D");
+        progressoMsgFloat.data("value", 100);
+        timerMensagem = setInterval(function() {
+            progressoMsgFloat.data("value", progressoMsgFloat.data("value") - 1);
+            progressoMsgFloat.css("width", progressoMsgFloat.data("value") + "%");
+            
+            //quando progressbar terminar
+            if (progressoMsgFloat.data("value") <= 0) {
+                clearInterval(timerMensagem);
+                $("#msgfloat").css('display', 'none');
+                if(redirect !== null){
+                    if(redirect === 'reload'){
+                        location.reload();
+                    } else{
+                        menuAjax(redirect);
+                    }
+                }
+            
+            }
+        }, interval);
+        
+    }
+
+
+
+    var timerMensagem = 0;
+    var progressoMsgFloat = $("#progressoMsgFloat");
+/*
+    function mensagemSucesso(texto, classe='info') {
+        carregando('hidden');
+        if (timerMensagem !== 0) {
+            clearInterval(timerMensagem);
+        }
+
+        $("#msgfloat").removeClass().addClass('alert alert-'+classe);
+        $("#msgfloat_text").html(texto);
+
+        var bodyCenter = $("body").width()/2;
+        var msgfloatCenter = $("#msgfloat").outerWidth()/2;
+        var msgfloatPosition = bodyCenter - msgfloatCenter;
+
+        $("#msgfloat").css('display', 'block');
+        $("#msgfloat").css('left', msgfloatPosition +'px');
+        progressoMsgFloat.css("width", "100%");
+        progressoMsgFloat.css("background-color", "#3C763D");
+        progressoMsgFloat.data("value", 100);
+        timerMensagem = setInterval(function() {
+            progressoMsgFloat.data("value", progressoMsgFloat.data("value") - 1);
+            progressoMsgFloat.css("width", progressoMsgFloat.data("value") + "%");
+            if (progressoMsgFloat.data("value") <= 0) {
+                clearInterval(timerMensagem);
+                $("#msgfloat").css('display', 'none');
+            }
+        }, 50);
+    }
+
+    function mensagemErro(texto, classe='info') {
+        carregando('hidden');
+        if (timerMensagem !== 0) {
+            clearInterval(timerMensagem);
+        }
+
+        $("#msgfloat").removeClass().addClass('alert alert-'+classe);
+        $("#msgfloat_text").html(texto);
+
+        var bodyCenter = $("body").width()/2;
+        var msgfloatCenter = $("#msgfloat").outerWidth()/2;
+        var msgfloatPosition = bodyCenter - msgfloatCenter;
+
+        $("#msgfloat").css('display', 'block');
+        $("#msgfloat").css('left', msgfloatPosition +'px');
+        progressoMsgFloat.css("width", "100%");
+        progressoMsgFloat.css("background-color", "#3C763D");
+        progressoMsgFloat.data("value", 100);
+        timerMensagem = setInterval(function() {
+            progressoMsgFloat.data("value", progressoMsgFloat.data("value") - 1);
+            progressoMsgFloat.css("width", progressoMsgFloat.data("value") + "%");
+            if (progressoMsgFloat.data("value") <= 0) {
+                clearInterval(timerMensagem);
+                $("#msgfloat").css('display', 'none');
+            }
+        }, 50);
+    }
+*/
+
+    $("#msgfloat_btn").click(function(){
+        $("#msgfloat").css('display', 'none');
+        clearInterval(timerMensagem);
+    });
+
+    function carregando(visao){
+        if(visao == 'show') visible = 'visible';
+        else visible = 'hidden'
+        $("#progressgif").css('visibility', visible);
+    }
+    
+    $("#getzindex").click(function(){
+
+        $('body *').each(function() {
+          var zIndex = $(this).css('zIndex'); // ("+" casts to number or NaN)
+        });
+        
+    });
+
+
+
+    $('body').on('mouseover','.limpar-inside-box', function() {
+        $(this).find('button.limpar-inside-btn').css('display', 'block');
+
+    });
+    $('body').on('mouseout','.limpar-inside-box',function() {
+        $(this).find('button.limpar-inside-btn').css('display', 'none');
+    });
+
+    $('body').on('click','.limpar-inside-btn', function () {
+        $(this).parent('div').find('.limpar-inside-input').val('').focus();
+    });
+
+
+    $('body').on('click','.exportExcel', function() {
+        
+        let div = $(this).data('tabela');
+        let table = $(div).find('table');
+        var filename = $(this).data('filename');
+        console.log(div,table,filename);
+		filename = (filename.length>2) ? filename+'.xlsx' : 'Download.xlsx';
+		exportExcel(table, filename, sheet='Sheet1' )
+
+    });
+
+    /**
+     * Carregar sub paginas nos dados das estações
+     */
+    $(document).on('click', '#tabsDados li a', function(evt) {
+
+        $(this).addClass('text-danger');
+        $('#tabsDados li a').not($(this)).removeClass('text-danger')
+
+        evt.preventDefault();
+        pasta =  $(this).data('pasta');
+        classe = $(this).data('classe');
+        metodo = $(this).data('metodo');
+        codigo = $(this).data('codigo-estacao');
+        
+        data_ini = $('#data_ini').val()?$('#data_ini').val():0;
+        data_fim = $('#data_fim').val()?$('#data_fim').val():0;
+        var var1 = $(this).data('var1');
+        var var2 = $(this).data('var2');
+
+        menuAjax(pasta +'/'+ classe +'/'+ metodo +'/'+ codigo +'/'+ data_ini +'/'+ data_fim +'/'+ var1 +'/'+ var2 );
+    });
+
+
+    function exportExcel(table, filename, sheet='Sheet1' ){
+        return TableToExcel.convert(table[0], { // html code may contain multiple tables so here we are refering to 1st table tag
+            name: filename, // fileName you could use any name
+            sheet: {
+                name: sheet // sheetName
+            }
+        });
+    }
+</script>
+</body>
+</html>
