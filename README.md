@@ -66,4 +66,4 @@ FIM
 
 ## Fluxograma
 
-![Fluxograma do Sistema](./fluxograma.png)
+![Fluxograma do Sistema](fluxograma.png)
