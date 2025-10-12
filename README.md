@@ -3,6 +3,11 @@
 Aplicação para **previsão de cotas do rio Lençóis** baseada em dados telemétricos e modelos ARIMA.  
 O sistema integra dados reais e previsões em uma **interface web interativa**, atualizando automaticamente as séries conforme novos dados são inseridos.
 
+## Fluxograma
+<img width="1268" height="2851" alt="image" src="https://github.com/user-attachments/assets/dfdfcaa7-c4ae-4db6-988a-3da78f049a52" />
+![Fluxograma do Sistema](fluxograma.png)
+
+
 ---
 
 ## 📋 Descrição Geral
@@ -64,6 +69,5 @@ INICIO
 
 FIM
 
-## Fluxograma
-<img width="1268" height="2851" alt="image" src="https://github.com/user-attachments/assets/dfdfcaa7-c4ae-4db6-988a-3da78f049a52" />
+
 
