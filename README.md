@@ -64,4 +64,6 @@ INICIO
 
 FIM
 
+## Fluxograma
+
 ![Fluxograma do Sistema](./fluxograma.png)
