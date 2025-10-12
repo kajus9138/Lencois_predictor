@@ -65,5 +65,5 @@ INICIO
 FIM
 
 ## Fluxograma
+<img width="1268" height="2851" alt="image" src="https://github.com/user-attachments/assets/dfdfcaa7-c4ae-4db6-988a-3da78f049a52" />
 
-![Fluxograma do Sistema](fluxograma.png)
