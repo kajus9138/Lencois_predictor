@@ -25,5 +25,20 @@ CREATE TABLE IF NOT EXISTS medicoes(
                FOREIGN KEY (estacao_id) REFERENCES estacoes(id))
 """)
 
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS forecasts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    estacao_id INTEGER NOT NULL,
+    timestamp_emissao DATETIME NOT NULL,  -- quando a previsão foi feita
+    timestamp_alvo DATETIME NOT NULL,      -- para quando a previsão vale
+    nivel_previsto_cm REAL,
+    nivel_inf REAL,
+    nivel_sup REAL,
+    modelo TEXT,
+    versao_modelo TEXT,
+    FOREIGN KEY (estacao_id) REFERENCES estacoes(id))
+
+""")
+
 conn.commit()
 conn.close()
