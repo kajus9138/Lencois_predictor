@@ -36,7 +36,7 @@ def preencher_nans(df, coluna):
     return df_copy
 
 
-df_jus = pd.read_csv('dados\Telemetria_Construserv_2025-09-17_jusante.csv', encoding='ISO-8859-1',
+df_jus = pd.read_csv('dados\Telemetria_Construserv_2025-09-10_jusante.csv', encoding='ISO-8859-1',
                  sep=';',skiprows=1, skipfooter=1, engine='python', decimal=',',
                 na_values = '-')
 df_jus.rename(columns={'Unnamed: 0': 'timestamp',
@@ -51,7 +51,7 @@ df_jus.index = pd.to_datetime(df_jus.index, format="%d/%m/%Y %H:%M", dayfirst=Tr
 
 
 
-df_mon = pd.read_csv('dados\Telemetria_Construserv_2025-09-17_montante.csv', encoding='ISO-8859-1',
+df_mon = pd.read_csv('dados\Telemetria_Construserv_2025-09-10_montante.csv', encoding='ISO-8859-1',
                  sep=';',skiprows=1, skipfooter=1, engine='python', decimal=',',
                 na_values = '-')
 df_mon.rename(columns={'Unnamed: 0': 'timestamp',
