@@ -7,3 +7,4 @@ seaborn
 pathlib
 scikit-learn
 statsmodels
+openpyxl
