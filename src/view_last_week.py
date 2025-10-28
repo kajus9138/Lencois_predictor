@@ -6,35 +6,85 @@ import streamlit as st
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 import numpy as np
 import matplotlib.dates as mdates
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,  # nível mínimo de log a ser mostrado
+    format='%(asctime)s - %(levelname)s - %(message)s',  # formato das mensagens
+    filename='last_week.log',  # arquivo onde os logs serão salvos
+    filemode='a'  # 'a' = append (adiciona ao arquivo); 'w' = overwrite (sobrescreve)
+)
 
 
 def exibir():
+
+
 
     db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'dados', 'rio.db')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
+    logging.info("Iniciando exibição de gráficos de comparação. . .")
+
+    fim = pd.read_sql(
+        """
+        SELECT MAX(
+        CASE
+            WHEN instr(timestamp, '/') > 0 THEN
+            -- caso formato seja DD/MM/YYYY HH:MM:SS
+            substr(timestamp, 7, 4) || '-' ||  -- ano
+            substr(timestamp, 4, 2) || '-' ||  -- mês
+            substr(timestamp, 1, 2) || ' ' ||  -- dia
+            substr(timestamp, 12, 8)           -- HH:MM:SS (8 caracteres)
+            ELSE
+            -- já está em YYYY-MM-DD HH:MM:SS (padrão ISO)
+            substr(timestamp, 1, 19)           -- pega YYYY-MM-DD HH:MM:SS
+        END
+        ) AS ultimo_timestamp
+        FROM medicoes;
+        """,
+        conn
+    )
+
+    fim = fim['ultimo_timestamp'].iloc[0]
+    # Parse seguro: agora fim está em 'YYYY-MM-DD HH:MM:SS'
+    fim = pd.to_datetime(fim, dayfirst=False)
+
+    inicio = fim - pd.Timedelta(days=7)
+    inicio_med = inicio + pd.Timedelta(days=1)
+
+    # Se quiser strings para logs
+    fim_s = str(fim)
+    inicio_s = str(inicio)
+    inicio_med_s = str(inicio_med)
+
+    logging.info(f"Periodo de forecasts: {inicio_s} a {fim_s}")
+    logging.info(f"Periodo de medicoes: {inicio_med_s} a {fim_s}")
+
     #Buscando dados medidos 
     df_med_mon = pd.read_sql(f"""
-        SELECT DISTINCT timestamp, nivel_cm
+        SELECT DISTINCT timestamp, nivel_cm 
         FROM medicoes
-        WHERE estacao_id = {1}
-        LIMIT 7;
+        WHERE estacao_id = {1} AND timestamp BETWEEN
+        '{inicio_med}' AND '{fim}' 
+        ORDER BY timestamp;
     """, conn)
     
     #print(df_med_mon['timestamp'])
     df_med_mon['timestamp'] = pd.to_datetime(df_med_mon['timestamp']).dt.date
+    logging.info("Últimos dados medidos a montante, df_med_mon: {df_med_mon}")
 
-    print(f"df_med_mon: {df_med_mon}")
 
     df_med_jus = pd.read_sql(f"""
-        SELECT DISTINCT timestamp, nivel_cm
+        SELECT DISTINCT timestamp, nivel_cm 
         FROM medicoes
-        WHERE estacao_id = {2}
-        LIMIT 7;
+        WHERE estacao_id = {2} AND timestamp BETWEEN
+        '{inicio_med}' AND '{fim}' 
+        ORDER BY timestamp;
     """, conn)
 
     df_med_jus['timestamp'] = pd.to_datetime(df_med_jus['timestamp']).dt.date
+    logging.info("Últimos dados medidos a jusante, df_med_jus: {df_med_jus}")
 
     #print(df_med_jus)
 
@@ -47,21 +97,20 @@ def exibir():
             nivel_inf, 
             nivel_sup, 
             timestamp_emissao
-        FROM forecasts
-        WHERE estacao_id = {1}
-        LIMIT 7;
+    FROM forecasts
+    WHERE estacao_id = {1}
+    AND strftime('%Y-%m-%d %H:%M', substr(timestamp_alvo, 7, 4) || '-' || substr(timestamp_alvo, 4, 2) || '-' || substr(timestamp_alvo, 1, 2) || ' ' || substr(timestamp_alvo, 12, 5))
+        BETWEEN '{inicio}' AND '{fim}'
+    ORDER BY timestamp_alvo;
     """, conn)
     
     #df_fc_mon = df_fc_mon.drop_duplicates(subset=['timestamp_alvo', 'nivel_previsto_cm', 'nivel_inf', 'nivel_sup'])
     df_fc_mon = df_fc_mon.reset_index(drop=True)
     df_fc_mon['timestamp_alvo'] = pd.to_datetime(df_fc_mon['timestamp_alvo'], dayfirst=True, errors='coerce')
-    
-    print(f"df_fc_mon before: {df_fc_mon}")
-    
     df_fc_mon = df_fc_mon[df_fc_mon['timestamp_alvo'].dt.date.isin(df_med_mon['timestamp'])]
     df_fc_mon = df_fc_mon.drop_duplicates(subset=['timestamp_alvo']).reset_index(drop=True)
 
-    print(f"df_fc_mon {df_fc_mon}")
+    logging.info("Previsões a montante, df_fc_mon: {df_fc_mon}")
     
     df_fc_jus = pd.read_sql(f"""
         SELECT DISTINCT 
@@ -70,9 +119,11 @@ def exibir():
             nivel_inf, 
             nivel_sup, 
             timestamp_emissao
-        FROM forecasts
-        WHERE estacao_id = {2}
-        LIMIT 7;
+    FROM forecasts
+    WHERE estacao_id = {2}
+    AND strftime('%Y-%m-%d %H:%M', substr(timestamp_alvo, 7, 4) || '-' || substr(timestamp_alvo, 4, 2) || '-' || substr(timestamp_alvo, 1, 2) || ' ' || substr(timestamp_alvo, 12, 5))
+        BETWEEN '{inicio}' AND '{fim}'
+    ORDER BY timestamp_alvo;
     """, conn)
     
     
@@ -82,6 +133,18 @@ def exibir():
     df_fc_jus = df_fc_jus[df_fc_jus['timestamp_alvo'].dt.date.isin(df_med_jus['timestamp'])]
     df_fc_jus = df_fc_jus.drop_duplicates(subset=['timestamp_alvo']).reset_index(drop=True)
 
+    logging.info("Previsões a jusante, df_fc_jus: {df_fc_jus}")
+
+
+    df_fc_mon = df_fc_mon.sort_values(by='timestamp_alvo').reset_index(drop=True)
+    df_fc_jus = df_fc_jus.sort_values(by='timestamp_alvo').reset_index(drop=True)
+
+
+    print(f"df_med_mon: {df_med_mon}")
+    print(f"df_med_jus: {df_med_jus}")
+
+    print(f"df_fc_mon: {df_fc_mon}")
+    print(f"df_fc_jus: {df_fc_jus}")
 
     mae_mon = mean_absolute_error(df_med_mon['nivel_cm'], df_fc_mon['nivel_previsto_cm'])
     rmse_mon = np.sqrt(mean_squared_error(df_med_mon['nivel_cm'], df_fc_mon['nivel_previsto_cm']))
@@ -122,8 +185,8 @@ def exibir():
                 bbox=dict(facecolor='white', alpha=0.7, edgecolor='gray'))
 
     # --- Jusante ---
-    axs[1].plot(df_med_jus['timestamp'], df_med_jus['nivel_cm'], color='blue', linewidth=3)
-    axs[1].plot(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3)
+    axs[1].plot(df_med_jus['timestamp'], df_med_jus['nivel_cm'], color='blue', linewidth=3, label='Real')
+    axs[1].plot(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3, label='Previsto')
     axs[1].fill_between(df_fc_jus['timestamp_alvo'],
                         df_fc_jus['nivel_inf'],
                         df_fc_jus['nivel_sup'],
@@ -140,6 +203,7 @@ def exibir():
                 transform=axs[1].transAxes,
                 fontsize=11, verticalalignment='top',
                 bbox=dict(facecolor='white', alpha=0.7, edgecolor='gray'))
+    axs[1].legend(loc='upper right')
 
     # --- Formatação do eixo X ---
     for ax in axs:
@@ -152,6 +216,14 @@ def exibir():
             ax.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m'))
         
         ax.tick_params(axis='x', rotation=45)
+
+    figuras_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'figuras')
+    os.makedirs(figuras_dir, exist_ok=True)
+
+
+    nome_arquivo = f'comparacao_{str(inicio)[:10]}_a_{str(fim)[:10]}.png'
+    caminho_arquivo = os.path.join(figuras_dir, nome_arquivo)
+    fig.savefig(caminho_arquivo, dpi=300, bbox_inches='tight')
 
     st.pyplot(fig)
 

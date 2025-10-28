@@ -27,7 +27,7 @@ def exibir():
     df_fc_mon = df_fc_mon.reset_index(drop=True)
     df_fc_mon['timestamp_alvo'] = pd.to_datetime(df_fc_mon['timestamp_alvo'], format='%d/%m/%Y %H:%M', errors='coerce')
 
-    print(f"olha o df aí {df_fc_mon}")
+    #print(f"olha o df aí {df_fc_mon}")
 
     df_fc_jus = pd.read_sql(f"""
         SELECT DISTINCT timestamp_alvo, nivel_previsto_cm, nivel_inf, nivel_sup
@@ -53,7 +53,7 @@ def exibir():
     #axs[0].legend()
     axs[0].grid(True, linestyle="--", alpha=0.6)
 
-    axs[1].plot(df_fc_jus['timestamp_alvo'],df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3)
+    axs[1].plot(df_fc_jus['timestamp_alvo'],df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3, label='Previsto')
     axs[1].fill_between(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_inf'], df_fc_jus['nivel_sup'], color='orange',
                         alpha=0.5, label="Intervalo de Confiança (95%)")
     
@@ -62,6 +62,7 @@ def exibir():
     axs[1].set_title(f"Estação: Jusante — Última semana")
     #axs[1].legend()
     axs[1].grid(True, linestyle="--", alpha=0.6)
+    axs[1].legend(loc='upper right')
     
     for ax in axs:
         ax.tick_params(axis='x', rotation=45)

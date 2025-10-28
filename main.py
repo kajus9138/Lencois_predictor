@@ -21,6 +21,14 @@ from pathlib import Path
 import os
 from src import view_next_week, view_last_week, layout, update, forecast
 import streamlit as st
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,  # nível mínimo de log a ser mostrado
+    format='%(asctime)s - %(levelname)s - %(message)s',  # formato das mensagens
+    filename='app.log',  # arquivo onde os logs serão salvos
+    filemode='a'  # 'a' = append (adiciona ao arquivo); 'w' = overwrite (sobrescreve)
+)
 
 
 # Leitura do arquivo de configuração
@@ -46,6 +54,7 @@ else:
 
 # Leitura do arquivo de novos dados
 arquivo = os.path.join( os.path.dirname(__file__), 'input', config['new_data']['arquivo'])
+logging.info(f"Lendo novos dados em: {arquivo}")
 
 # Execução da aplicação
 

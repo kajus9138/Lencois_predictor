@@ -3,6 +3,14 @@ import os
 from pathlib import Path
 from datetime import datetime
 import sqlite3
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,  # nível mínimo de log a ser mostrado
+    format='%(asctime)s - %(levelname)s - %(message)s',  # formato das mensagens
+    filename='forecast.log',  # arquivo onde os logs serão salvos
+    filemode='a'  # 'a' = append (adiciona ao arquivo); 'w' = overwrite (sobrescreve)
+)
 
 raiz = os.path.dirname(os.path.dirname(__file__))
 arima_mon = os.path.join(raiz, 'dados', 'modelos', 'arima_mon.pkl')
@@ -10,7 +18,8 @@ arima_jus = os.path.join(raiz, 'dados', 'modelos', 'arima_jus.pkl')
 
 def insere_forecasts(modelo, estacao_id):
 
-    print("iniciando novos forecasts")
+    logging.info("iniciando novos forecasts")
+    
     
     
 
