@@ -6,3 +6,4 @@ scikit-learn
 seaborn
 pathlib
 scikit-learn
+statsmodels
