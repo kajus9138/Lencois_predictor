@@ -80,6 +80,7 @@ else:
     forecast.insere_forecasts(arima_jus, estacao_id=2)
 
     ## roda o view_next_week com os dados da última semana de previsões disponível
+    view_last_week.exibir()
     view_next_week.exibir()
 
 

@@ -24,6 +24,13 @@ def exibir():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
+    cursor.execute("SELECT COUNT(*) FROM medicoes;")
+    qtd_registros = cursor.fetchone()[0]
+
+    if qtd_registros == 0:
+        print("A tabela 'medicoes' está vazia.")
+        return
+
     logging.info("Iniciando exibição de gráficos de comparação. . .")
 
     fim = pd.read_sql(
