@@ -1,0 +1,10 @@
+streamlit
+matplotlib
+pandas
+numpy
+scikit-learn
+seaborn
+sqlite3
+pathlib
+pickle
+scikit-learn
