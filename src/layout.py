@@ -41,7 +41,7 @@ def exibir_cabecalho():
             .cabecalho h1 {
                 margin: 0;
                 padding: 0;
-                font-size: 60px;
+                font-size: 55px;
                 color: #575757;
                 font-weight: 600;
                 line-height: 1.2;

@@ -20,6 +20,7 @@ import sqlite3
 from pathlib import Path
 import os
 from src import view_next_week, view_last_week, layout, update, forecast
+from src.funcoes_estilizar import direitos_autorais
 import streamlit as st
 import logging
 
@@ -69,6 +70,8 @@ if os.path.isfile(arquivo):
 
     view_last_week.exibir()
     view_next_week.exibir()
+    direitos_autorais()
+
 
 
 
@@ -82,6 +85,7 @@ else:
     ## roda o view_next_week com os dados da última semana de previsões disponível
     view_last_week.exibir()
     view_next_week.exibir()
+    direitos_autorais()
 
 
 

@@ -7,6 +7,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 import numpy as np
 import matplotlib.dates as mdates
 import logging
+from .funcoes_estilizar import aplicar_estilo
 
 logging.basicConfig(
     level=logging.INFO,  # nível mínimo de log a ser mostrado
@@ -172,13 +173,14 @@ def exibir():
     fig, axs = plt.subplots(1, 2, figsize=(20, 8))
 
     # --- Montante ---
-    axs[0].plot(df_med_mon['timestamp'], df_med_mon['nivel_cm'], color='blue', linewidth=3)
-    axs[0].plot(df_fc_mon['timestamp_alvo'], df_fc_mon['nivel_previsto_cm'], color='orange', linewidth=3)
+    axs[0].plot(df_med_mon['timestamp'], df_med_mon['nivel_cm'], color='orange', linewidth=4)
+    axs[0].plot(df_fc_mon['timestamp_alvo'], df_fc_mon['nivel_previsto_cm'], color='blue', linewidth=4)
     axs[0].fill_between(df_fc_mon['timestamp_alvo'],
                         df_fc_mon['nivel_inf'],
                         df_fc_mon['nivel_sup'],
-                        color='orange', alpha=0.5,
+                        color='#5894bf', alpha=0.5,
                         label="Intervalo de Confiança (95%)")
+    aplicar_estilo(axs[0], "Estação Montante – Última semana")
 
     axs[0].set_xlabel("Data")
     axs[0].set_ylabel("Nível (cm)")
@@ -192,13 +194,14 @@ def exibir():
                 bbox=dict(facecolor='white', alpha=0.7, edgecolor='gray'))
 
     # --- Jusante ---
-    axs[1].plot(df_med_jus['timestamp'], df_med_jus['nivel_cm'], color='blue', linewidth=3, label='Real')
-    axs[1].plot(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3, label='Previsto')
+    axs[1].plot(df_med_jus['timestamp'], df_med_jus['nivel_cm'], color='orange', linewidth=4, label='Real')
+    axs[1].plot(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_previsto_cm'], color='blue', linewidth=4, label='Previsto')
     axs[1].fill_between(df_fc_jus['timestamp_alvo'],
                         df_fc_jus['nivel_inf'],
                         df_fc_jus['nivel_sup'],
-                        color='orange', alpha=0.5,
+                        color='#5894bf', alpha=0.5,
                         label="Intervalo de Confiança (95%)")
+    aplicar_estilo(axs[1], "Estação Jusante – Última semana")
 
     axs[1].set_xlabel("Data")
     axs[1].set_ylabel("Nível (cm)")

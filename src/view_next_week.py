@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import streamlit as st
 import numpy as np
+import matplotlib.patches as patches
+from .funcoes_estilizar import aplicar_estilo 
 
 
 
@@ -41,26 +43,36 @@ def exibir():
     df_fc_jus = df_fc_jus.reset_index(drop=True)
     df_fc_jus['timestamp_alvo'] = pd.to_datetime(df_fc_jus['timestamp_alvo'], format='%d/%m/%Y %H:%M', errors='coerce')
 
-    fig, axs = plt.subplots(1,2, figsize=(20,8))
+    fig, axs = plt.subplots(1, 2, figsize=(20, 8)) 
 
-    axs[0].plot(df_fc_mon['timestamp_alvo'],df_fc_mon['nivel_previsto_cm'], color='orange', linewidth=3)
-    axs[0].fill_between(df_fc_mon['timestamp_alvo'], df_fc_mon['nivel_inf'], df_fc_mon['nivel_sup'], color='orange',
-                        alpha=0.5, label="Intervalo de Confiança (95%)")
-    
+    axs[0].plot(df_fc_mon['timestamp_alvo'],df_fc_mon['nivel_previsto_cm'], color='blue', linewidth=4)
+    axs[0].fill_between(df_fc_mon['timestamp_alvo'],
+                        df_fc_mon['nivel_inf'],
+                        df_fc_mon['nivel_sup'],
+                        color='#5894bf',
+                        alpha=0.5,
+                        label="Intervalo de Confiança (95%)")
+    aplicar_estilo(axs[0], "Estação Montante – Última semana")
+
     axs[0].set_xlabel("Data")
     axs[0].set_ylabel("Nível (cm)")
     axs[0].set_title(f"Estação: Montante — Última semana")
-    #axs[0].legend()
+    axs[0].legend()
     axs[0].grid(True, linestyle="--", alpha=0.6)
 
-    axs[1].plot(df_fc_jus['timestamp_alvo'],df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3, label='Previsto')
-    axs[1].fill_between(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_inf'], df_fc_jus['nivel_sup'], color='orange',
-                        alpha=0.5, label="Intervalo de Confiança (95%)")
+    axs[1].plot(df_fc_jus['timestamp_alvo'],df_fc_jus['nivel_previsto_cm'], color='blue', linewidth=4, label='Previsto')
+    axs[1].fill_between(df_fc_jus['timestamp_alvo'],
+                        df_fc_jus['nivel_inf'],
+                        df_fc_jus['nivel_sup'],
+                        color='#5894bf', alpha=0.5,
+                        label="Intervalo de Confiança (95%)")
+    
+    aplicar_estilo(axs[1], "Estação Jusante – Última semana")
     
     axs[1].set_xlabel("Data")
     axs[1].set_ylabel("Nível (cm)")
     axs[1].set_title(f"Estação: Jusante — Última semana")
-    #axs[1].legend()
+    axs[1].legend()
     axs[1].grid(True, linestyle="--", alpha=0.6)
     axs[1].legend(loc='upper right')
     
