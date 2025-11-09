@@ -70,11 +70,17 @@ def exibir():
 
     #Buscando dados medidos 
     df_med_mon = pd.read_sql(f"""
-        SELECT DISTINCT timestamp, nivel_cm 
+    SELECT m.timestamp, m.nivel_cm
+    FROM medicoes m
+    JOIN (
+        SELECT timestamp, MAX(id) AS max_id
         FROM medicoes
-        WHERE estacao_id = {1} AND timestamp BETWEEN
-        '{inicio_med}' AND '{fim}' 
-        ORDER BY timestamp;
+        WHERE estacao_id = {1}
+          AND timestamp BETWEEN '{inicio_med}' AND '{fim}'
+        GROUP BY timestamp
+    ) x
+    ON m.id = x.max_id
+    ORDER BY m.timestamp;
     """, conn)
     
     #print(df_med_mon['timestamp'])
@@ -83,11 +89,17 @@ def exibir():
 
 
     df_med_jus = pd.read_sql(f"""
-        SELECT DISTINCT timestamp, nivel_cm 
+    SELECT m.timestamp, m.nivel_cm
+    FROM medicoes m
+    JOIN (
+        SELECT timestamp, MAX(id) AS max_id
         FROM medicoes
-        WHERE estacao_id = {2} AND timestamp BETWEEN
-        '{inicio_med}' AND '{fim}' 
-        ORDER BY timestamp;
+        WHERE estacao_id = {2}
+          AND timestamp BETWEEN '{inicio_med}' AND '{fim}'
+        GROUP BY timestamp
+    ) x
+    ON m.id = x.max_id
+    ORDER BY m.timestamp;
     """, conn)
 
     df_med_jus['timestamp'] = pd.to_datetime(df_med_jus['timestamp']).dt.date

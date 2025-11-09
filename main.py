@@ -22,6 +22,7 @@ import os
 from src import view_next_week, view_last_week, layout, update, forecast
 import streamlit as st
 import logging
+from datetime import datetime, timedelta
 
 logging.basicConfig(
     level=logging.INFO,  # nível mínimo de log a ser mostrado
@@ -49,18 +50,40 @@ ultimo_timestamp = cursor.fetchone()
 
 if ultimo_timestamp is not None:
     ultimo_timestamp = ultimo_timestamp[0]
-else:
+else:  # primeiro forecast
     ultimo_timestamp = None
+ 
 
 # Leitura do arquivo de novos dados
 arquivo = os.path.join( os.path.dirname(__file__), 'input', config['new_data']['arquivo'])
 logging.info(f"Lendo novos dados em: {arquivo}")
 
+
+#print(f"ultimo_timestamp type: {type(ultimo_timestamp)}\n")
+#print(f"first_new_timestamp type: {type(first_new_timestamp)}\n")
+
 # Execução da aplicação
 
-if os.path.isfile(arquivo):
+if os.path.isfile(arquivo) and ultimo_timestamp is not None:
     layout.exibir_cabecalho()
-    update.etl_medicoes(ultimo_timestamp, arquivo)
+    df_med_mon, df_med_jus = update.process_data(arquivo)
+    first_new_timestamp = df_med_mon.index[0]
+    last_timestamp = datetime.strptime(ultimo_timestamp, "%Y-%m-%d %H:%M:%S")
+
+    if first_new_timestamp.date() == last_timestamp.date() + timedelta(days=1):
+        update.etl_medicoes(ultimo_timestamp, df_med_mon, df_med_jus)
+        update.atualiza_arima()
+        arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
+        arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
+        forecast.insere_forecasts(arima_mon, estacao_id=1)
+        forecast.insere_forecasts(arima_jus, estacao_id=2)
+
+    view_last_week.exibir()
+    view_next_week.exibir()
+
+elif os.path.isfile(arquivo) and ultimo_timestamp is None:
+    df_med_mon, df_med_jus = update.process_data(arquivo)
+    update.etl_medicoes(ultimo_timestamp, df_med_mon, df_med_jus)
     update.atualiza_arima()
     arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
     arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')

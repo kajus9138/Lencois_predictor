@@ -90,9 +90,7 @@ def process_data(arquivo):
     return df_med_mon, df_med_jus
 
 
-def etl_medicoes(ultimo_timestamp, arquivo):
-    
-    df_med_mon, df_med_jus = process_data(arquivo)
+def etl_medicoes(ultimo_timestamp, df_med_mon, df_med_jus):
     
     first_new_timestamp = df_med_mon.index[0]
 
@@ -103,7 +101,8 @@ def etl_medicoes(ultimo_timestamp, arquivo):
         ultimo_timestamp = pd.to_datetime(ultimo_timestamp)
         diferenca = first_new_timestamp - ultimo_timestamp
 
-    if diferenca == pd.Timedelta(days=1) or diferenca == 0:
+    #if diferenca == pd.Timedelta(days=1) or diferenca == 0:
+    if True:
         print("iniciando ETL")
         raiz = os.path.dirname(os.path.dirname(__file__))
         db_path = os.path.join(raiz, 'dados', 'rio.db')
