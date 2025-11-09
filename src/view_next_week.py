@@ -46,21 +46,25 @@ def exibir():
     axs[0].plot(df_fc_mon['timestamp_alvo'],df_fc_mon['nivel_previsto_cm'], color='orange', linewidth=3)
     axs[0].fill_between(df_fc_mon['timestamp_alvo'], df_fc_mon['nivel_inf'], df_fc_mon['nivel_sup'], color='orange',
                         alpha=0.5, label="Intervalo de Confiança (95%)")
+    axs[0].axhline(y=200, linestyle='--', color='red')
     
     axs[0].set_xlabel("Data")
     axs[0].set_ylabel("Nível (cm)")
     axs[0].set_title(f"Estação: Montante — Última semana")
     #axs[0].legend()
     axs[0].grid(True, linestyle="--", alpha=0.6)
+    axs[0].set_ylim(50,250)
 
     axs[1].plot(df_fc_jus['timestamp_alvo'],df_fc_jus['nivel_previsto_cm'], color='orange', linewidth=3, label='Previsto')
     axs[1].fill_between(df_fc_jus['timestamp_alvo'], df_fc_jus['nivel_inf'], df_fc_jus['nivel_sup'], color='orange',
                         alpha=0.5, label="Intervalo de Confiança (95%)")
+    axs[1].axhline(y=200, linestyle='--', color='red')
     
     axs[1].set_xlabel("Data")
     axs[1].set_ylabel("Nível (cm)")
     axs[1].set_title(f"Estação: Jusante — Última semana")
     #axs[1].legend()
+    axs[1].set_ylim(50,250)
     axs[1].grid(True, linestyle="--", alpha=0.6)
     axs[1].legend(loc='upper right')
     

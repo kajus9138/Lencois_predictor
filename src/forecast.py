@@ -4,6 +4,8 @@ from pathlib import Path
 from datetime import datetime
 import sqlite3
 import logging
+import numpy as np
+import streamlit as st
 
 logging.basicConfig(
     level=logging.INFO,  # nível mínimo de log a ser mostrado
@@ -44,11 +46,18 @@ def insere_forecasts(modelo, estacao_id):
     cursor = conn.cursor()
 
     # Inserir previsões no banco
+    niveis_sup = []
+    predicted_means = []
+    
     for timestamp_alvo, nivel_previsto_cm in preds.items():
         # Obter limites inferior e superior
         intervalo = conf_int.loc[timestamp_alvo]
         nivel_inf = float(intervalo[0])
         nivel_sup = float(intervalo[1])
+        niveis_sup.append(nivel_sup)
+        predicted_means.append(float(nivel_previsto_cm))
+
+
 
         print(timestamp_alvo)
 
@@ -71,6 +80,21 @@ def insere_forecasts(modelo, estacao_id):
 
     conn.commit()
     conn.close()
+
+    if np.array(predicted_means).max() >= 200 and estacao_id == 1:
+        st.error("Alerta: Previsão média para montante acima de 1 metro !!")
+    if np.array(niveis_sup).max() >= 200 and estacao_id == 1:
+        st.warning("Alerta: Nível superior para montante acima de 1 metro !!")
+    
+    if np.array(predicted_means).max() >= 200 and estacao_id == 2:
+        st.error("Alerta: Previsão média para jusante acima de 1 metro !!")
+    if np.array(niveis_sup).max() >= 200 and estacao_id == 1:
+        st.warning("Alerta: Nível superior para jusante acima de 1 metro !!")
+
+
+
+
+    return 
 
 insere_forecasts(arima_mon, estacao_id=1)
 insere_forecasts(arima_jus, estacao_id=2)

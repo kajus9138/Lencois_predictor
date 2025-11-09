@@ -191,10 +191,12 @@ def exibir():
                         df_fc_mon['nivel_sup'],
                         color='orange', alpha=0.5,
                         label="Intervalo de Confiança (95%)")
+    axs[0].axhline(y=200, linestyle='--', color='red')
 
     axs[0].set_xlabel("Data")
     axs[0].set_ylabel("Nível (cm)")
     axs[0].set_title("Estação: Montante — Última semana")
+    axs[0].set_ylim(50,250)
     axs[0].grid(True, linestyle="--", alpha=0.6)
 
     axs[0].text(0.02, 0.95,
@@ -211,10 +213,12 @@ def exibir():
                         df_fc_jus['nivel_sup'],
                         color='orange', alpha=0.5,
                         label="Intervalo de Confiança (95%)")
+    axs[1].axhline(y=200, linestyle='--', color='red')
 
     axs[1].set_xlabel("Data")
     axs[1].set_ylabel("Nível (cm)")
     axs[1].set_title("Estação: Jusante — Última semana")
+    axs[1].set_ylim(50,250)
     axs[1].grid(True, linestyle="--", alpha=0.6)
 
     axs[1].text(0.02, 0.95,

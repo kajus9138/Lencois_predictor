@@ -51,10 +51,7 @@ else:
     arquivo = os.path.join( os.path.dirname(__file__), 'input', config['new_data']['arquivo'])
     logging.info(f"Lendo novos dados em: {arquivo}")
 
-
-
-
-
+print(f"arquivo: {arquivo}")
 
 # Conexão ao banco de dados
 db_path = os.path.join(os.path.dirname(__file__), 'dados', 'rio.db')
@@ -82,14 +79,31 @@ if os.path.isfile(arquivo) and ultimo_timestamp is not None:
     df_med_mon, df_med_jus = update.process_data(arquivo)
     first_new_timestamp = df_med_mon.index[0]
     last_timestamp = datetime.strptime(ultimo_timestamp, "%Y-%m-%d %H:%M:%S")
+    if df_med_jus['nivel_cm'].max() >= 200:
+        st.error("Alerta: nível medido para jusante da semana ultrapassou 2 metros !")
+    if df_med_mon['nivel_cm'].max() >= 200:
+        st.error("Alerta: nível medido para montante da semana ultrapassou 2 metros !")
+
 
     if first_new_timestamp.date() == last_timestamp.date() + timedelta(days=1):
+        if df_med_jus['nivel_cm'].max() >= 200:
+            st.error("Alerta: nível medido para jusante da semana ultrapassou 2 metros !")
+        if df_med_mon['nivel_cm'].max() >= 200:
+            st.error("Alerta: nível medido para montante da semana ultrapassou 2 metros !")
+
+        
+        
+
+
         update.etl_medicoes(ultimo_timestamp, df_med_mon, df_med_jus)
         update.atualiza_arima()
         arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
         arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
         forecast.insere_forecasts(arima_mon, estacao_id=1)
         forecast.insere_forecasts(arima_jus, estacao_id=2)
+
+
+        
 
     view_last_week.exibir()
     view_next_week.exibir()
@@ -102,6 +116,8 @@ elif os.path.isfile(arquivo) and ultimo_timestamp is None:
     arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
     forecast.insere_forecasts(arima_mon, estacao_id=1)
     forecast.insere_forecasts(arima_jus, estacao_id=2)
+        
+    
 
     view_last_week.exibir()
     view_next_week.exibir()
@@ -114,6 +130,8 @@ else:
     arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
     forecast.insere_forecasts(arima_mon, estacao_id=1)
     forecast.insere_forecasts(arima_jus, estacao_id=2)
+        
+    
 
     ## roda o view_next_week com os dados da última semana de previsões disponível
     view_last_week.exibir()
