@@ -49,7 +49,7 @@ INICIO
         timestamp_ultimo ← ultimo registro no banco
         timestamp_novo ← primeiro registro dos novos dados
 
-        SE (timestamp_novo - timestamp_ultimo == 1 hora):
+        SE (timestamp_novo - timestamp_ultimo == 1 dia):
             - Tratar valores ausentes (NaN)
             - Tratar outliers
             - Atualizar tabela de dados observados no banco
