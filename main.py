@@ -19,10 +19,11 @@ import configparser
 import sqlite3
 from pathlib import Path
 import os
-from src import view_next_week, view_last_week, layout, update, forecast
+from src import view_next_week, view_last_week, update, forecast, layout
 import streamlit as st
 import logging
 from datetime import datetime, timedelta
+import streamlit as st
 
 logging.basicConfig(
     level=logging.INFO,  # nível mínimo de log a ser mostrado
@@ -31,12 +32,28 @@ logging.basicConfig(
     filemode='a'  # 'a' = append (adiciona ao arquivo); 'w' = overwrite (sobrescreve)
 )
 
-
 # Leitura do arquivo de configuração
 config = configparser.ConfigParser()
 config.read('config.ini')
 #modo = config['modo']['teste']
 #print(type(modo))
+
+
+uploaded_file = st.file_uploader("Envie arquivo de dados de medição atualizados", type=["xlsx"])
+if uploaded_file is not None:
+    destino = os.path.join(os.path.dirname(__file__), 'input', 'novo_dado.xlsx')
+    with open(destino, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+    st.success("Arquivo enviado com sucesso. Reprocessando dados...")
+    arquivo = destino
+else:
+    # Leitura do arquivo de novos dados
+    arquivo = os.path.join( os.path.dirname(__file__), 'input', config['new_data']['arquivo'])
+    logging.info(f"Lendo novos dados em: {arquivo}")
+
+
+
+
 
 
 # Conexão ao banco de dados
@@ -53,10 +70,6 @@ if ultimo_timestamp is not None:
 else:  # primeiro forecast
     ultimo_timestamp = None
  
-
-# Leitura do arquivo de novos dados
-arquivo = os.path.join( os.path.dirname(__file__), 'input', config['new_data']['arquivo'])
-logging.info(f"Lendo novos dados em: {arquivo}")
 
 
 #print(f"ultimo_timestamp type: {type(ultimo_timestamp)}\n")
@@ -105,6 +118,8 @@ else:
     ## roda o view_next_week com os dados da última semana de previsões disponível
     view_last_week.exibir()
     view_next_week.exibir()
+
+
 
 
 
