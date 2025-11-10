@@ -19,7 +19,8 @@ O sistema:
 ---
 
 ## Fluxograma
-<img width="1268" height="2851" alt="image" src="https://github.com/user-attachments/assets/dfdfcaa7-c4ae-4db6-988a-3da78f049a52" />
+<img width="849" height="1459" alt="image" src="https://github.com/user-attachments/assets/c0330a68-d985-443d-a7cc-365744c9f4cf" />
+
  ---
 
 ## 🧠 Lógica do Sistema (Pseudocódigo)
@@ -48,7 +49,7 @@ INICIO
         timestamp_ultimo ← ultimo registro no banco
         timestamp_novo ← primeiro registro dos novos dados
 
-        SE (timestamp_novo - timestamp_ultimo == 1 hora):
+        SE (timestamp_novo - timestamp_ultimo == 1 dia):
             - Tratar valores ausentes (NaN)
             - Tratar outliers
             - Atualizar tabela de dados observados no banco
