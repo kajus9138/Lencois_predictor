@@ -1015,3 +1015,300 @@
 2025-11-09 02:04:25,757 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
 2025-11-09 02:04:25,761 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
 2025-11-09 02:04:25,763 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:16:43,512 - INFO - iniciando novos forecasts
+2025-11-09 03:16:43,565 - INFO - iniciando novos forecasts
+2025-11-09 03:16:43,637 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:16:43,641 - INFO - Periodo de forecasts: 2025-10-28 00:00:00 a 2025-11-04 00:00:00
+2025-11-09 03:16:43,641 - INFO - Periodo de medicoes: 2025-10-29 00:00:00 a 2025-11-04 00:00:00
+2025-11-09 03:16:43,646 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:16:43,653 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:16:43,668 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:16:43,679 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:21:27,651 - INFO - iniciando novos forecasts
+2025-11-09 03:22:01,473 - INFO - iniciando novos forecasts
+2025-11-09 03:22:01,663 - INFO - iniciando novos forecasts
+2025-11-09 03:22:01,951 - INFO - Lendo novos dados em: input\1.xlsx
+2025-11-09 03:22:02,300 - INFO - iniciando novos forecasts
+2025-11-09 03:22:02,335 - INFO - iniciando novos forecasts
+2025-11-09 03:22:02,385 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:22:02,387 - INFO - Periodo de forecasts: 2025-09-10 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:22:02,387 - INFO - Periodo de medicoes: 2025-09-11 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:22:02,389 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:22:02,391 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:22:02,394 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:22:02,398 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:34:44,918 - INFO - iniciando novos forecasts
+2025-11-09 03:34:45,236 - INFO - iniciando novos forecasts
+2025-11-09 03:34:45,569 - INFO - Lendo novos dados em: input\1.xlsx
+2025-11-09 03:34:45,993 - INFO - iniciando novos forecasts
+2025-11-09 03:34:46,038 - INFO - iniciando novos forecasts
+2025-11-09 03:34:46,099 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:34:46,102 - INFO - Periodo de forecasts: 2025-09-10 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:34:46,103 - INFO - Periodo de medicoes: 2025-09-11 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:34:46,104 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:34:46,106 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:34:46,109 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:34:46,111 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:35:47,002 - INFO - iniciando novos forecasts
+2025-11-09 03:35:47,283 - INFO - iniciando novos forecasts
+2025-11-09 03:35:47,624 - INFO - Lendo novos dados em: input\1.xlsx
+2025-11-09 03:35:47,925 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:35:47,928 - INFO - Periodo de forecasts: 2025-09-10 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:35:47,928 - INFO - Periodo de medicoes: 2025-09-11 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:35:47,930 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:35:47,932 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:35:47,935 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:35:47,937 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:36:29,421 - INFO - iniciando novos forecasts
+2025-11-09 03:36:29,643 - INFO - iniciando novos forecasts
+2025-11-09 03:36:29,938 - INFO - Lendo novos dados em: input\1.xlsx
+2025-11-09 03:36:30,387 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:36:30,391 - INFO - Periodo de forecasts: 2025-09-10 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:36:30,391 - INFO - Periodo de medicoes: 2025-09-11 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 03:36:30,394 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:36:30,398 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:36:30,407 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:36:30,413 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:37:48,559 - INFO - iniciando novos forecasts
+2025-11-09 03:37:48,608 - INFO - iniciando novos forecasts
+2025-11-09 03:37:48,685 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:37:48,690 - INFO - Periodo de forecasts: 2025-09-17 00:00:00 a 2025-09-24 00:00:00
+2025-11-09 03:37:48,690 - INFO - Periodo de medicoes: 2025-09-18 00:00:00 a 2025-09-24 00:00:00
+2025-11-09 03:37:48,694 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:37:48,702 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:37:48,707 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:37:48,717 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 03:38:23,228 - INFO - iniciando novos forecasts
+2025-11-09 03:38:23,273 - INFO - iniciando novos forecasts
+2025-11-09 03:38:23,326 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 03:38:23,329 - INFO - Periodo de forecasts: 2025-09-24 00:00:00 a 2025-10-01 00:00:00
+2025-11-09 03:38:23,330 - INFO - Periodo de medicoes: 2025-09-25 00:00:00 a 2025-10-01 00:00:00
+2025-11-09 03:38:23,333 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 03:38:23,336 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 03:38:23,343 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 03:38:23,349 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:10:25,249 - INFO - iniciando novos forecasts
+2025-11-09 06:10:25,530 - INFO - iniciando novos forecasts
+2025-11-09 06:10:25,894 - INFO - Lendo novos dados em: input\s1.xlsx
+2025-11-09 06:10:25,946 - INFO - iniciando novos forecasts
+2025-11-09 06:10:25,968 - INFO - iniciando novos forecasts
+2025-11-09 06:10:46,246 - INFO - iniciando novos forecasts
+2025-11-09 06:10:46,335 - INFO - iniciando novos forecasts
+2025-11-09 06:10:46,391 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:10:46,393 - INFO - Periodo de forecasts: 2025-09-10 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 06:10:46,393 - INFO - Periodo de medicoes: 2025-09-11 00:00:00 a 2025-09-17 00:00:00
+2025-11-09 06:10:46,396 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:10:46,398 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:10:46,404 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:10:46,408 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:11:51,657 - INFO - iniciando novos forecasts
+2025-11-09 06:11:51,712 - INFO - iniciando novos forecasts
+2025-11-09 06:11:51,780 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:11:51,782 - INFO - Periodo de forecasts: 2025-09-17 00:00:00 a 2025-09-24 00:00:00
+2025-11-09 06:11:51,782 - INFO - Periodo de medicoes: 2025-09-18 00:00:00 a 2025-09-24 00:00:00
+2025-11-09 06:11:51,785 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:11:51,788 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:11:51,792 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:11:51,795 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:12:36,058 - INFO - iniciando novos forecasts
+2025-11-09 06:12:36,110 - INFO - iniciando novos forecasts
+2025-11-09 06:12:36,165 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:12:36,167 - INFO - Periodo de forecasts: 2025-09-24 00:00:00 a 2025-10-01 00:00:00
+2025-11-09 06:12:36,168 - INFO - Periodo de medicoes: 2025-09-25 00:00:00 a 2025-10-01 00:00:00
+2025-11-09 06:12:36,172 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:12:36,175 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:12:36,179 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:12:36,190 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:13:22,624 - INFO - iniciando novos forecasts
+2025-11-09 06:13:22,675 - INFO - iniciando novos forecasts
+2025-11-09 06:13:22,731 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:13:22,733 - INFO - Periodo de forecasts: 2025-10-01 00:00:00 a 2025-10-08 00:00:00
+2025-11-09 06:13:22,734 - INFO - Periodo de medicoes: 2025-10-02 00:00:00 a 2025-10-08 00:00:00
+2025-11-09 06:13:22,739 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:13:22,743 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:13:22,748 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:13:22,758 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:13:41,263 - INFO - iniciando novos forecasts
+2025-11-09 06:13:41,306 - INFO - iniciando novos forecasts
+2025-11-09 06:13:41,365 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:13:41,366 - INFO - Periodo de forecasts: 2025-10-08 00:00:00 a 2025-10-15 00:00:00
+2025-11-09 06:13:41,367 - INFO - Periodo de medicoes: 2025-10-09 00:00:00 a 2025-10-15 00:00:00
+2025-11-09 06:13:41,369 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:13:41,373 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:13:41,376 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:13:41,381 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:14:30,095 - INFO - iniciando novos forecasts
+2025-11-09 06:14:30,149 - INFO - iniciando novos forecasts
+2025-11-09 06:14:30,219 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:14:30,225 - INFO - Periodo de forecasts: 2025-10-15 00:00:00 a 2025-10-22 00:00:00
+2025-11-09 06:14:30,225 - INFO - Periodo de medicoes: 2025-10-16 00:00:00 a 2025-10-22 00:00:00
+2025-11-09 06:14:30,228 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:14:30,233 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:14:30,241 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:14:30,246 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:15:15,082 - INFO - iniciando novos forecasts
+2025-11-09 06:15:15,128 - INFO - iniciando novos forecasts
+2025-11-09 06:15:15,197 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:15:15,199 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:15:15,199 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:15:15,203 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:15:15,207 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:15:15,212 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:15:15,217 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:15:50,544 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:15:50,548 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:15:50,548 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:15:50,552 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:15:50,556 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:15:50,564 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:15:50,571 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:17:29,448 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:17:29,452 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:17:29,453 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:17:29,456 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:17:29,458 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:17:29,463 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:17:29,468 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:18:14,710 - INFO - Lendo novos dados em: input\s1.xlsx
+2025-11-09 06:18:14,726 - INFO - iniciando novos forecasts
+2025-11-09 06:18:14,757 - INFO - iniciando novos forecasts
+2025-11-09 06:18:14,813 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:18:14,815 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:18:14,815 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:18:14,817 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:18:14,819 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:18:14,823 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:18:14,827 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:18:26,065 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:18:26,067 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:18:26,068 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:18:26,070 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:18:26,072 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:18:26,075 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:18:26,078 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:19:22,221 - INFO - Lendo novos dados em: input\s1.xlsx
+2025-11-09 06:19:22,235 - INFO - iniciando novos forecasts
+2025-11-09 06:19:22,264 - INFO - iniciando novos forecasts
+2025-11-09 06:19:22,300 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:19:22,302 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:19:22,302 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:19:22,304 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:19:22,306 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:19:22,308 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:19:22,311 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:19:36,645 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:19:36,648 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:19:36,648 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:19:36,652 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:19:36,655 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:19:36,662 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:19:36,665 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:21:48,056 - INFO - Lendo novos dados em: input\s1.xlsx
+2025-11-09 06:21:48,068 - INFO - iniciando novos forecasts
+2025-11-09 06:21:48,099 - INFO - iniciando novos forecasts
+2025-11-09 06:21:48,134 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:21:48,138 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:21:48,138 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-09 06:21:48,141 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:21:48,143 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:21:48,147 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:21:48,153 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-09 06:21:54,319 - INFO - iniciando novos forecasts
+2025-11-09 06:21:54,362 - INFO - iniciando novos forecasts
+2025-11-09 06:21:54,431 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-09 06:21:54,435 - INFO - Periodo de forecasts: 2025-10-28 00:00:00 a 2025-11-04 00:00:00
+2025-11-09 06:21:54,436 - INFO - Periodo de medicoes: 2025-10-29 00:00:00 a 2025-11-04 00:00:00
+2025-11-09 06:21:54,440 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-09 06:21:54,444 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-09 06:21:54,452 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-09 06:21:54,460 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:02:24,194 - INFO - iniciando novos forecasts
+2025-11-10 09:02:24,830 - INFO - iniciando novos forecasts
+2025-11-10 09:02:25,423 - INFO - Lendo novos dados em: input\s1.xlsx
+2025-11-10 09:02:25,491 - INFO - iniciando novos forecasts
+2025-11-10 09:02:25,526 - INFO - iniciando novos forecasts
+2025-11-10 09:02:25,565 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:02:25,572 - INFO - Periodo de forecasts: 2025-10-28 00:00:00 a 2025-11-04 00:00:00
+2025-11-10 09:02:25,572 - INFO - Periodo de medicoes: 2025-10-29 00:00:00 a 2025-11-04 00:00:00
+2025-11-10 09:02:25,576 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:02:25,579 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:02:25,595 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:02:25,606 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:04:02,893 - INFO - iniciando novos forecasts
+2025-11-10 09:04:51,987 - INFO - iniciando novos forecasts
+2025-11-10 09:04:52,186 - INFO - iniciando novos forecasts
+2025-11-10 09:04:52,508 - INFO - Lendo novos dados em: input\s1.xlsx
+2025-11-10 09:04:52,535 - INFO - iniciando novos forecasts
+2025-11-10 09:04:52,560 - INFO - iniciando novos forecasts
+2025-11-10 09:05:52,083 - INFO - iniciando novos forecasts
+2025-11-10 09:05:52,130 - INFO - iniciando novos forecasts
+2025-11-10 09:05:52,193 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:05:52,197 - INFO - Periodo de forecasts: 2025-09-10 00:00:00 a 2025-09-17 00:00:00
+2025-11-10 09:05:52,198 - INFO - Periodo de medicoes: 2025-09-11 00:00:00 a 2025-09-17 00:00:00
+2025-11-10 09:05:52,202 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:05:52,205 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:05:52,209 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:05:52,213 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:06:34,351 - INFO - iniciando novos forecasts
+2025-11-10 09:06:34,409 - INFO - iniciando novos forecasts
+2025-11-10 09:06:34,499 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:06:34,503 - INFO - Periodo de forecasts: 2025-09-17 00:00:00 a 2025-09-24 00:00:00
+2025-11-10 09:06:34,503 - INFO - Periodo de medicoes: 2025-09-18 00:00:00 a 2025-09-24 00:00:00
+2025-11-10 09:06:34,507 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:06:34,510 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:06:34,524 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:06:34,528 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:07:44,170 - INFO - iniciando novos forecasts
+2025-11-10 09:07:44,217 - INFO - iniciando novos forecasts
+2025-11-10 09:07:44,309 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:07:44,314 - INFO - Periodo de forecasts: 2025-09-24 00:00:00 a 2025-10-01 00:00:00
+2025-11-10 09:07:44,316 - INFO - Periodo de medicoes: 2025-09-25 00:00:00 a 2025-10-01 00:00:00
+2025-11-10 09:07:44,321 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:07:44,325 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:07:44,332 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:07:44,338 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:08:07,504 - INFO - iniciando novos forecasts
+2025-11-10 09:08:07,543 - INFO - iniciando novos forecasts
+2025-11-10 09:08:07,612 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:08:07,617 - INFO - Periodo de forecasts: 2025-10-01 00:00:00 a 2025-10-08 00:00:00
+2025-11-10 09:08:07,617 - INFO - Periodo de medicoes: 2025-10-02 00:00:00 a 2025-10-08 00:00:00
+2025-11-10 09:08:07,620 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:08:07,623 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:08:07,628 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:08:07,641 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:08:37,528 - INFO - iniciando novos forecasts
+2025-11-10 09:08:37,569 - INFO - iniciando novos forecasts
+2025-11-10 09:08:37,694 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:08:37,705 - INFO - Periodo de forecasts: 2025-10-08 00:00:00 a 2025-10-15 00:00:00
+2025-11-10 09:08:37,709 - INFO - Periodo de medicoes: 2025-10-09 00:00:00 a 2025-10-15 00:00:00
+2025-11-10 09:08:37,716 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:08:37,719 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:08:37,729 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:08:37,738 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:08:54,709 - INFO - iniciando novos forecasts
+2025-11-10 09:08:54,751 - INFO - iniciando novos forecasts
+2025-11-10 09:08:54,807 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:08:54,810 - INFO - Periodo de forecasts: 2025-10-15 00:00:00 a 2025-10-22 00:00:00
+2025-11-10 09:08:54,810 - INFO - Periodo de medicoes: 2025-10-16 00:00:00 a 2025-10-22 00:00:00
+2025-11-10 09:08:54,813 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:08:54,816 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:08:54,823 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:08:54,828 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:10:16,428 - INFO - iniciando novos forecasts
+2025-11-10 09:10:16,478 - INFO - iniciando novos forecasts
+2025-11-10 09:10:16,539 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:10:16,540 - INFO - Periodo de forecasts: 2025-10-22 00:00:00 a 2025-10-29 00:00:00
+2025-11-10 09:10:16,540 - INFO - Periodo de medicoes: 2025-10-23 00:00:00 a 2025-10-29 00:00:00
+2025-11-10 09:10:16,542 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:10:16,544 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:10:16,550 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:10:16,556 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
+2025-11-10 09:11:47,825 - INFO - iniciando novos forecasts
+2025-11-10 09:11:47,885 - INFO - iniciando novos forecasts
+2025-11-10 09:11:47,988 - INFO - Iniciando exibição de gráficos de comparação. . .
+2025-11-10 09:11:47,994 - INFO - Periodo de forecasts: 2025-10-29 00:00:00 a 2025-11-05 00:00:00
+2025-11-10 09:11:47,995 - INFO - Periodo de medicoes: 2025-10-30 00:00:00 a 2025-11-05 00:00:00
+2025-11-10 09:11:48,001 - INFO - Últimos dados medidos a montante, df_med_mon: {df_med_mon}
+2025-11-10 09:11:48,006 - INFO - Últimos dados medidos a jusante, df_med_jus: {df_med_jus}
+2025-11-10 09:11:48,012 - INFO - Previsões a montante, df_fc_mon: {df_fc_mon}
+2025-11-10 09:11:48,019 - INFO - Previsões a jusante, df_fc_jus: {df_fc_jus}
