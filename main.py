@@ -24,6 +24,7 @@ import streamlit as st
 import logging
 from datetime import datetime, timedelta
 import streamlit as st
+import pandas as pd
 
 logging.basicConfig(
     level=logging.INFO,  # nível mínimo de log a ser mostrado
@@ -79,6 +80,11 @@ if os.path.isfile(arquivo) and ultimo_timestamp is not None:
     df_med_mon, df_med_jus = update.process_data(arquivo)
     first_new_timestamp = df_med_mon.index[0]
     last_timestamp = datetime.strptime(ultimo_timestamp, "%Y-%m-%d %H:%M:%S")
+
+    forecast_day_init = df_med_mon.index[-1] + pd.Timedelta(days=1)
+
+
+
     if df_med_jus['nivel_cm'].max() >= 200:
         st.error("Alerta: nível medido para jusante da semana ultrapassou 2 metros !")
     if df_med_mon['nivel_cm'].max() >= 200:
@@ -99,8 +105,8 @@ if os.path.isfile(arquivo) and ultimo_timestamp is not None:
         update.atualiza_arima()
         arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
         arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
-        forecast.insere_forecasts(arima_mon, estacao_id=1)
-        forecast.insere_forecasts(arima_jus, estacao_id=2)
+        forecast.insere_forecasts(arima_mon, estacao_id=1, day_1=forecast_day_init)
+        forecast.insere_forecasts(arima_jus, estacao_id=2, day_1=forecast_day_init)
 
 
         
@@ -110,12 +116,13 @@ if os.path.isfile(arquivo) and ultimo_timestamp is not None:
 
 elif os.path.isfile(arquivo) and ultimo_timestamp is None:
     df_med_mon, df_med_jus = update.process_data(arquivo)
+    forecast_day_init = df_med_mon.index[-1] + pd.Timedelta(days=1)
     update.etl_medicoes(ultimo_timestamp, df_med_mon, df_med_jus)
     update.atualiza_arima()
     arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
     arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
-    forecast.insere_forecasts(arima_mon, estacao_id=1)
-    forecast.insere_forecasts(arima_jus, estacao_id=2)
+    forecast.insere_forecasts(arima_mon, estacao_id=1, day_1=forecast_day_init)
+    forecast.insere_forecasts(arima_jus, estacao_id=2, day_1=forecast_day_init)
         
     
 
@@ -128,8 +135,8 @@ else:
     layout.exibir_cabecalho()
     arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
     arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
-    forecast.insere_forecasts(arima_mon, estacao_id=1)
-    forecast.insere_forecasts(arima_jus, estacao_id=2)
+    forecast.insere_forecasts(arima_mon, estacao_id=1, day_1 = '2025-09-11 00:00:00')
+    forecast.insere_forecasts(arima_jus, estacao_id=2, day_1 = '2025-09-11 00:00:00')
         
     
 

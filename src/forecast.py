@@ -6,6 +6,7 @@ import sqlite3
 import logging
 import numpy as np
 import streamlit as st
+import pandas as pd
 
 logging.basicConfig(
     level=logging.INFO,  # nível mínimo de log a ser mostrado
@@ -18,12 +19,8 @@ raiz = os.path.dirname(os.path.dirname(__file__))
 arima_mon = os.path.join(raiz, 'dados', 'modelos', 'arima_mon.pkl')
 arima_jus = os.path.join(raiz, 'dados', 'modelos', 'arima_jus.pkl')
 
-def insere_forecasts(modelo, estacao_id):
-
+def insere_forecasts(modelo, estacao_id, day_1): 
     logging.info("iniciando novos forecasts")
-    
-    
-    
 
     with open(modelo, "rb") as f:
         resultado = pickle.load(f)
@@ -35,6 +32,17 @@ def insere_forecasts(modelo, estacao_id):
     preds = forecast.predicted_mean
     conf_int = forecast.conf_int(alpha=0.05)
 
+    # gerar timestamps diários entre start_day e end_day
+    day_7 = pd.to_datetime(day_1) + pd.Timedelta(days=6)
+    timestamps_range = pd.date_range(start=day_1, end=day_7, freq="D")
+    print(f"\n\n timestamps_range:{timestamps_range}\n\n")
+
+    if len(timestamps_range) != len(preds):
+        raise ValueError(
+            f"Quantidade de timestamps ({len(timestamps_range)}) "
+            f"não coincide com quantidade de previsões ({len(preds)})."
+        )
+
     timestamp_emissao = datetime.now()
     modelo = "ARIMA"
     versao_modelo = "1.0"
@@ -45,21 +53,20 @@ def insere_forecasts(modelo, estacao_id):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    # Inserir previsões no banco
     niveis_sup = []
     predicted_means = []
-    
-    for timestamp_alvo, nivel_previsto_cm in preds.items():
-        # Obter limites inferior e superior
-        intervalo = conf_int.loc[timestamp_alvo]
+
+    # percorrer os timestamps novos junto com os valores previstos
+    for ts_alvo, (orig_ts, nivel_previsto_cm) in zip(timestamps_range, preds.items()):
+
+        intervalo = conf_int.loc[orig_ts]
         nivel_inf = float(intervalo[0])
         nivel_sup = float(intervalo[1])
+
         niveis_sup.append(nivel_sup)
         predicted_means.append(float(nivel_previsto_cm))
 
-
-
-        print(timestamp_alvo)
+        print(ts_alvo)
 
         cursor.execute("""
             INSERT INTO forecasts (
@@ -70,7 +77,7 @@ def insere_forecasts(modelo, estacao_id):
         """, (
             estacao_id,
             timestamp_emissao.strftime("%d/%m/%Y %H:%M"),
-            timestamp_alvo.strftime("%d/%m/%Y %H:%M"),
+            ts_alvo.strftime("%d/%m/%Y %H:%M"),   # <<< usa timestamp do range
             float(nivel_previsto_cm),
             nivel_inf,
             nivel_sup,
@@ -88,13 +95,8 @@ def insere_forecasts(modelo, estacao_id):
     
     if np.array(predicted_means).max() >= 200 and estacao_id == 2:
         st.error("Alerta: Previsão média para jusante acima de 1 metro !!")
-    if np.array(niveis_sup).max() >= 200 and estacao_id == 1:
+    if np.array(niveis_sup).max() >= 200 and estacao_id == 2:
         st.warning("Alerta: Nível superior para jusante acima de 1 metro !!")
 
+    return
 
-
-
-    return 
-
-insere_forecasts(arima_mon, estacao_id=1)
-insere_forecasts(arima_jus, estacao_id=2)

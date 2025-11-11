@@ -16,11 +16,18 @@ def exibir():
 
     # Buscando dados de forecast
     df_fc_mon = pd.read_sql(f"""
-        SELECT DISTINCT timestamp_alvo, nivel_previsto_cm, nivel_inf, nivel_sup
-        FROM forecasts
-        WHERE estacao_id = {1}
-        ORDER BY date(substr(timestamp_alvo, 7, 4) || '-' || substr(timestamp_alvo, 4, 2) || '-' || substr(timestamp_alvo, 1, 2)) DESC
-        LIMIT 7;
+    SELECT timestamp_alvo, nivel_previsto_cm, nivel_inf, nivel_sup
+    FROM forecasts
+    WHERE estacao_id = {1}
+      AND timestamp_emissao = (
+            SELECT MAX(timestamp_emissao)
+            FROM forecasts
+            WHERE estacao_id = 1
+      )
+    ORDER BY date(substr(timestamp_alvo, 7, 4) || '-' ||
+                  substr(timestamp_alvo, 4, 2) || '-' ||
+                  substr(timestamp_alvo, 1, 2)) ASC
+    LIMIT 7;
     """, conn)
     
     df_fc_mon = df_fc_mon.drop_duplicates(subset=['timestamp_alvo', 'nivel_previsto_cm', 'nivel_inf', 'nivel_sup'])
@@ -30,17 +37,25 @@ def exibir():
     #print(f"olha o df aí {df_fc_mon}")
 
     df_fc_jus = pd.read_sql(f"""
-        SELECT DISTINCT timestamp_alvo, nivel_previsto_cm, nivel_inf, nivel_sup
-        FROM forecasts
-        WHERE estacao_id = {2}
-        ORDER BY date(substr(timestamp_alvo, 7, 4) || '-' || substr(timestamp_alvo, 4, 2) || '-' || substr(timestamp_alvo, 1, 2)) DESC
-        LIMIT 7;
+    SELECT timestamp_alvo, nivel_previsto_cm, nivel_inf, nivel_sup
+    FROM forecasts
+    WHERE estacao_id = {2}
+      AND timestamp_emissao = (
+            SELECT MAX(timestamp_emissao)
+            FROM forecasts
+            WHERE estacao_id = 2
+      )
+    ORDER BY date(substr(timestamp_alvo, 7, 4) || '-' ||
+                  substr(timestamp_alvo, 4, 2) || '-' ||
+                  substr(timestamp_alvo, 1, 2)) ASC
+    LIMIT 7;
     """, conn)
     
     df_fc_jus = df_fc_jus.drop_duplicates(subset=['timestamp_alvo', 'nivel_previsto_cm', 'nivel_inf', 'nivel_sup'])
     df_fc_jus = df_fc_jus.reset_index(drop=True)
     df_fc_jus['timestamp_alvo'] = pd.to_datetime(df_fc_jus['timestamp_alvo'], format='%d/%m/%Y %H:%M', errors='coerce')
 
+    print(f"\n\ndf_fc_jus_next: {df_fc_jus}\n\n")
     fig, axs = plt.subplots(1,2, figsize=(20,8))
 
     axs[0].plot(df_fc_mon['timestamp_alvo'],df_fc_mon['nivel_previsto_cm'], color='orange', linewidth=3)
