@@ -76,7 +76,7 @@ def insere_forecasts(modelo, estacao_id, day_1):
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             estacao_id,
-            timestamp_emissao.strftime("%d/%m/%Y %H:%M"),
+            timestamp_emissao.strftime("%d/%m/%Y %H:%M:%S"),
             ts_alvo.strftime("%d/%m/%Y %H:%M"),   # <<< usa timestamp do range
             float(nivel_previsto_cm),
             nivel_inf,
