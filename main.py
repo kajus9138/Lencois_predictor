@@ -1,19 +1,4 @@
 
-# Leitura do dicionário de configuração
-
-# Verifica se há arquivo com novos dados
-    #SIM:
-        # VERIFICA COMPATIBILIDADE
-        # ETL
-        # ATUALIZA ARIMA
-        # GET FORECAST
-        # PLOT LAST WEEK (QUERY MASCARA)
-        # PLOT NEXT WEEK
-
-    #NÃO:
-        #GET FORECAST
-        #PLOT NEXT WEEK
-
 
 import configparser
 import sqlite3
@@ -133,10 +118,10 @@ elif os.path.isfile(arquivo) and ultimo_timestamp is None:
 
 else:
     layout.exibir_cabecalho()
-    arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
-    arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
-    forecast.insere_forecasts(arima_mon, estacao_id=1, day_1 = '2025-09-11 00:00:00')
-    forecast.insere_forecasts(arima_jus, estacao_id=2, day_1 = '2025-09-11 00:00:00')
+    #arima_mon = os.path.join('dados', 'modelos', 'arima_mon.pkl')
+    #arima_jus = os.path.join('dados', 'modelos', 'arima_jus.pkl')
+    #forecast.insere_forecasts(arima_mon, estacao_id=1, day_1 = '2025-09-11 00:00:00')
+    #forecast.insere_forecasts(arima_jus, estacao_id=2, day_1 = '2025-09-11 00:00:00')
         
     
 
