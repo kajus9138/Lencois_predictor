@@ -1,0 +1,11 @@
+streamlit
+matplotlib
+pandas
+numpy
+scikit-learn
+seaborn
+pathlib
+scikit-learn
+statsmodels
+openpyxl
+chardet

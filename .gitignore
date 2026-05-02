@@ -1,0 +1,8 @@
+# Ignorar ambiente virtual
+.venv/
+__pycache__/
+
+# Ignorar modelos pesados (arquivos pickle)
+*.pkl
+dados/*.pkl
+dados/modelos/*.pkl
